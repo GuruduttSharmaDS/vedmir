@@ -22,12 +22,13 @@ class Auth extends CI_Controller {
     public function change_lang($lang='english') {
         $this->session->set_userdata(PREFIX.'sessLang', $lang);
         echo 1;
-    }
+	}
+	
 	// Login view
-	function login($role = "admin"){
+	function login($role = "admin") {
 		$this->session->set_userdata(PREFIX.'sessRole', $role);
 		$this->outputdata["role"]	=	$role;
-		//echo $role;
+
 		if(isset($_POST['txtEmailId']) && $_POST['txtEmailId']!="") {
 			$testMode = (isset($_REQUEST['testMode']) )?true:false;		
             $dbresult	=	$this->checkLogin($role,$testMode);

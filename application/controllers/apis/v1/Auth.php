@@ -6,16 +6,13 @@ require APPPATH . 'libraries/REST_Controller.php';
 
 class Auth extends REST_Controller {
 
-    function __construct()
-    {
+    function __construct() {
         // Construct the parent class
         parent::__construct();
         $this->methods['users_get']['limit'] = 500; // 500 requests per hour per user/key
         $this->methods['users_post']['limit'] = 500; // 100 requests per hour per user/key
         $this->methods['users_delete']['limit'] = 50; // 50 requests per hour per user/key
-
     }
-
 
     // test push 
     public function testpush_post() {
