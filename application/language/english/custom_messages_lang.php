@@ -575,6 +575,7 @@ $lang['genderRequired'] = 'Gender required.';
 $lang['dobRequired'] = 'DOB required.';
 $lang['mobileRequired'] = 'Mobile required.';
 $lang['countryCodeRequired'] = 'Country Code required.';
+$lang['roleRequired'] = 'User Role required.';
 $lang['addressRequired'] = 'Address required.';
 $lang['postalCodeRequired'] = 'Postal code required.';
 $lang['cityRequired'] = 'City required.';
