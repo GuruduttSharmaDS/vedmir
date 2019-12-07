@@ -1,0 +1,44 @@
+@media screen and (min-width:767px) and (max-width:1750px){
+
+
+
+}
+
+
+
+
+@media (min-width: 320px) and (max-width: 767px) {
+
+#wrapper.toggled #sidebar-wrapper {
+    max-width: 57px;
+}
+
+.d-flex.toggled #sidebar-wrapper .list-group {
+    width: 100%;
+}
+.d-flex {
+    overflow-y: scroll;
+}
+
+#page-content-wrapper {
+    min-width: 82vw !important;
+}
+
+body {
+    font-size: 14px;
+}
+
+.d-flex.toggled aside .navbar-nav .dropdown-menu {
+    right: -209px!important;
+}
+
+aside .dropdown-item {
+    background-color: #2f3c56;
+    padding: 10px 0;
+}
+
+
+
+}
+
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>VEDMIR</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="img/favicon1.png" type="images/png" sizes="16x16">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <!-- Import Custom Js-->
+  <script src="js/validate.js"></script>
+</head>
+<body>
+  <div class="content_holder enquiry_form">
+    <a href="index.html"><img src="img/arrow_back.png" class="img-fluid"></a>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="email_subscribe">
+            <div class="img_logo">
+              <img src="img/logo.png" class="img-fluid">
+            </div>
+            <form class='form-enq'>
+              <h2>Have an Enquiry?</h2>
+              <div class="form-group">        
+                <input type="text" class="form-control" id="name" autocomplete="off" placeholder="Your Name" name="name" required="">
+              </div>
+              <div class="form-group email_subject">               
+                  <input type="email" class="form-control" id="email" autocomplete="off" placeholder="Email" name="email" required="">
+                   <input type="text" class="form-control" id="subject" autocomplete="off" placeholder="Subject" name="subject" required="">                  
+                </div>
+                <div class="form-group">               
+                 <textarea placeholder="Message" class="form-control" id="message" autocomplete="off" required=""></textarea>                
+                </div>
+              <button type="button" class="btn btn-primary" onclick="sendMail(this,1)">Submit</button>
+			  <div class="msg"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+        <footer>
+      <p>Copyrights © 2018 VEDMIR.</p>
+    </footer>
+  </div>
+</body>
+</html>
