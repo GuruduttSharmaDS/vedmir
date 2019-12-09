@@ -24,6 +24,14 @@ class Commonajax extends CI_Controller {
 
 		if( $action == "addCategory" ) 
 			$return =  $this->AddCategory( $_POST, $_FILES );
+
+		else if($action == "addUpdateStudent" )
+			$return = $this->addUpdateStudent($_POST, $_FILES);
+
+		else if( $action == "getStudentList" ) 
+			$return = $this->getStudentList($_POST);
+
+
 		/******************************** Order Section *****************************/
 		
 		else if($action == "newOrderList" )
@@ -68,16 +76,17 @@ class Commonajax extends CI_Controller {
 	function changeStatus($status = 0){
 
 		$updateStatus = 0;
+		$status = $this->input->post('event');
+
 		$table = 'vm_'.$this->input->post('tab');
 		$queryData = array('status' => $status);
 		$cond = $this->input->post('tab')."Id ='".$this->input->post('id')."'";
 
-		if( $this->input->post('tab')  == 'category'){
+		if ( $this->input->post('tab')  == 'category'){
 			$cond = "categoryId =".$this->input->post('id');
-		}
-		elseif( $this->input->post('tab') == 'notification'){
+		} elseif ( $this->input->post('tab') == 'notification'){
 			$queryData = array('status' => 3);
-		}
+		} 
 
 		if(!empty($table) && !empty($queryData) && !empty($cond)){
 			$updateStatus = $this->Common_model->update($table, $queryData, $cond);
@@ -519,7 +528,7 @@ class Commonajax extends CI_Controller {
 		}
 		else 
 			return array("valid" => false, "data" => array(), "msg" => "User name is required!");
-	}
+	}	
     
     public function getUserList() {
 		$columns = array( 0 => "userId", 1 => "userName", 2 => "email", 3 => "mobile", 4 => "addedOn", 5 => "userId");
@@ -582,10 +591,137 @@ class Commonajax extends CI_Controller {
         return $json_data = array("draw" => intval($this->input->post('draw')), "recordsTotal"    => intval($totalData), "recordsFiltered" => intval($totalFiltered), "data" => $data );
 	}
 
+	// Parse Add Update Data
+	public function parseStudentTeacherAdminUserData ($data) {
+		$isExist = $this->Common_model->selRowData("vm_auth","emailId, status, roleId","emailId = '".$_POST['email']."'");
+		if (isset($isExist->email))
+			return array("valid" => false, "msg" => "This email is already in use, Please try with another email Id.");
+		
+		$insertData = array();
+		$insertData['userName']		=   trim($data['userName']);
+		$insertData['email']		=   trim($data['email']);
+		$insertData['countryCode']	=   trim($data['countryCode']);
+		$insertData['mobile']		=   trim($data['mobile']);
+		$insertData['gender'] 		=  $data['gender']; 
+		$insertData['dob'] 			=  $data['dob'];  
+		$insertData['country'] 		=  $data['country']; 
+		$insertData['state'] 		=  $data['state']; 
+		$insertData['city'] 		=  $data['city']; 
+		$insertData['address'] 		=  $data['address']; 
+		$insertData['postalCode'] 	=  $data['postalCode']; 
+		$insertData['updatedOn']	=   date('Y-m-d H:i:s');
 
+		return $insertData;
+	}
 
+	// Add Student
+    public function addUpdateStudent($data, $filedata) {
+    	// return $data;
+		if(isset($data['userName']) && !empty($data['userName'])) {
+			$itemId = (isset($data['hiddenval']) && !empty($data['hiddenval']) && $data['hiddenval'] > 0 ) ? $data['hiddenval'] : '';
 
+			$insertData = $this->parseStudentTeacherAdminUserData ($data);			
+			$imageName  = $this->uploadFile("user_images");
 
+			if ($imageName) 
+				$insertData['img'] = $imageName;
+
+			if ($itemId > 0) {
+				// Update
+				$updateStatus = $this->Common_model->update("vm_user", $insertData, "userId = ".$itemId);
+				$userAddId 	  = $itemId;
+				if ($updateStatus)
+					$authStatus = $this->createAuth($userAddId, $role ='user', $insertData['email'], '',1);
+			} else {
+				$insertData['addedOn'] = date('Y-m-d H:i:s');
+				$authStatus = '';
+				$this->db->trans_start();
+				$updateStatus = $this->Common_model->insertUnique("vm_user", $insertData);
+				$userAddId = $updateStatus;
+				
+				if ($updateStatus)
+				   $authStatus = $this->createAuth($updateStatus, $role ='user', $insertData['email'], trim($_POST['password']),0);
+
+				if ($this->db->trans_status() === FALSE || !$authStatus || !$updateStatus) {
+					$this->db->trans_rollback();
+					$updateStatus = false;
+				} else
+					$this->db->trans_commit();
+			}
+
+			if ($updateStatus)
+				return array("valid" => true, "msg" => ( $itemId > 0 )?"User Updated Successfully!":"User Added Successfully!");
+			else
+				return array("valid" => false, "msg" => "Something went wrong.");
+
+		}
+		else 
+			return array("valid" => false, "data" => array(), "msg" => "User name is required!");
+	}
+
+	// List Student
+	public function getStudentList() {
+		$columns = array( 0 => "userId", 1 => "userName", 2 => "email", 3 => "mobile", 4 => "addedOn", 5 => "userId");
+        $limit = $this->input->post('length');
+        $start = $this->input->post('start');
+        $order = $columns[$this->input->post('order')[0]['column']];
+        $dir = $this->input->post('order')[0]['dir'];
+
+        $cond = " order by $order $dir LIMIT $start, $limit ";
+        $totalDataCount = $this->Common_model->exequery("SELECT count(*) as total from "."vm_user as us where us.status != 2",1);
+        $totalData = ( isset($totalDataCount->total)  && $totalDataCount->total > 0 ) ? $totalDataCount->total : 0;
+            
+        $totalFiltered = $totalData; 
+        $qry = "SELECT us.*,(case when img != '' then concat('".UPLOADPATH."/user_images/', img) else '' end) as image from "."vm_user as us where us.status != 2"; 
+        if(empty($this->input->post('search')['value']))
+
+            $queryData = $this->Common_model->exequery($qry.$cond);
+        else {
+            $search = $this->input->post('search')['value']; 
+            if (!empty($search))
+            	$search = str_replace(['"',"'"], ['', ''], $search);
+
+            $searchCond = " AND (us.userName LIKE  '%".$search."%' OR us.email LIKE  '%".$search."%' OR us.mobile LIKE  '%".$search."%' OR us.status LIKE  '%".$search."%'  ) ";
+            $cond = $searchCond.$cond;
+            $queryData = $this->Common_model->exequery($qry.$cond);
+
+            $totalDataCount = $this->Common_model->exequery("SELECT count(*) as total from "."vm_user as us where us.status != 2 ".$searchCond,1);
+
+            $totalFiltered = ( isset($totalDataCount->total)  && $totalDataCount->total > 0 ) ? $totalDataCount->total : 0;
+        }
+        $data = array();
+
+        if(!empty($queryData))
+        {
+            foreach ($queryData as $row)
+            {	
+            		
+                $nestedData['img'] = ( $row->image != '' ) ? '<img src="'.$row->image.'" width="30px" height="30px">' : "";
+                $nestedData['userName'] = $row->userName.''.$row->lastName;
+                $nestedData['email'] = $row->email;
+                $nestedData['mobile'] = $row->mobile;
+				$nestedData['addedOn'] = $row->addedOn;
+				$updateStatus = ($row->status == 1) ? 0 : 1;
+                if ( $row->status == 1 ) {
+                	$nestedData['status'] = "DeActive";
+                	$btnClass =  "text-danger";
+                }
+                else {
+                	$nestedData['status'] =  "Active";
+                	$btnClass =  "text-success";
+                }
+				// onclick="delete_row(this,\'student\','.$row->userId.');"
+				// onclick="return confirm(\'Are you sure?\')? delete_row(this,\'student\','.$row->userId.'):'';";
+
+                $nestedData['action'] = '<a class="btn btn-primary btn-custom-sm" title="view" href="'.DASHURL.'/admin/student/detail/'.$row->userId.'"><i class="fa fa-eye"></i></a><a class="btn btn-info btn-custom-sm" title="Edit" href="'.DASHURL.'/admin/student/add/'.$row->userId.'"><i class="fa fa-pen"></i></a><button onclick="return confirm(\'Are You Sure Want To Update This Record ?\')? CallHandlerForDeleteRecord(this,\'user\','.$row->userId.','.$updateStatus.'):\'\';" class="btn btn-light btn-custom-sm '.$btnClass.'" title="Active/DeActive" data-status="'.$nestedData['status'].'"><i class="fa fa-circle"></i></button><button class="btn btn-danger btn-custom-sm" title="Delete Student"  onclick="return confirm(\'Are You Sure Want To Delete This Record ?\')? CallHandlerForDeleteRecord(this,\'user\','.$row->userId.',2):\'\';"><i class="fa fa-trash"></i></button>';
+
+                $data[] = $nestedData;
+
+            }
+        }
+          
+        return $json_data = array("draw" => intval($this->input->post('draw')), "recordsTotal"    => intval($totalData), "recordsFiltered" => intval($totalFiltered), "data" => $data );
+	}
 	
 
 }

@@ -937,3 +937,13 @@ $lang['activeMember'] = 'Active Member';
 $lang['cancelledByRestaurant'] = 'Cancelled By Restaurant';
 $lang['cancelledByUser'] = 'Cancelled By User';
 $lang['deletedUser'] = 'Deleted user';
+
+// Sidebar
+$lang['addStudent'] = 'Add Student';
+$lang['studentList'] = 'Student List';
+
+// 
+$lang['totalStudents'] = 'Total Students';
+$lang['totalTeachers'] = 'Total Teachers';
+$lang['totalCategories'] = 'Total Categories';
+$lang['students'] = 'Students';

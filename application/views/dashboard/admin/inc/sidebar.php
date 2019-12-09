@@ -38,46 +38,21 @@
                 <a href="<?php echo DASHURL."/admin/welcome"; ?>" class="list-group-item list-group-item-action nav-link"> <i class="fas fa-tachometer-alt"></i><span><?=$this->lang->line('dashboard') ?></span> </a>
             </li>
             <li class="nav-item dropdown <?=($this->menu == 3) ? 'show' : ''; ?>">
-                <a class="list-group-item list-group-item-action nav-link dropdown-toggle <?=($this->menu == 3) ? 'active' : ''; ?>" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="<?=($this->menu == 3) ? 'true' : 'false'; ?>"><i class="fas fa-user"></i><span><?=$this->lang->line('users') ?></span></a>
+                <a class="list-group-item list-group-item-action nav-link dropdown-toggle <?=($this->menu == 3) ? 'active' : ''; ?>" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="<?=($this->menu == 3) ? 'true' : 'false'; ?>"><i class="fas fa-user"></i><span><?= $this->lang->line('students') ?></span></a>
                 <div class="dropdown-menu <?=($this->menu == 3) ? 'show' : ''; ?>" aria-labelledby="navbarDropdown">
-                    <a href="<?php echo DASHURL."/admin/user/add-user"; ?>" class="dropdown-item <?=($this->subMenu == 31) ? 'active' : ''; ?>"><?=$this->lang->line('addUsers') ?></a>
-                    <a href="<?php echo DASHURL."/admin/user/user-list"; ?>" class="dropdown-item <?php echo ($this->subMenu == 32) ? 'active' : ''; ?>"> <?=$this->lang->line('userList') ?> </a>
-                    <a href="<?php echo DASHURL."/admin/user/blocked-user-list"; ?>" class="dropdown-item <?php echo ($this->subMenu == 34) ? 'class="active"' : ''; ?>"> <?=$this->lang->line('blocked').' '.$this->lang->line('userList') ?> </a>
-                    <a href="<?php echo DASHURL."/admin/user/enquiry-list"; ?>" class="dropdown-item <?php echo ($this->subMenu == 33) ? 'class="active"' : ''; ?>"> <?=$this->lang->line('enquiryList') ?> </a>
+                    <a href="<?php echo DASHURL."/admin/student/add"; ?>" class="dropdown-item <?=($this->subMenu == 31) ? 'active' : ''; ?>"><?=$this->lang->line('addStudent') ?></a>
+                    <a href="<?php echo DASHURL."/admin/student/list"; ?>" class="dropdown-item <?php echo ($this->subMenu == 32) ? 'active' : ''; ?>"> <?=$this->lang->line('studentList') ?> </a>
                 </div>
-            </li>
-            <li class="nav-item dropdown <?=($this->menu == 7) ? 'show' : ''; ?>">
-                <a class="list-group-item list-group-item-action nav-link dropdown-toggle <?=($this->menu == 7) ? 'active' : ''; ?>" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="<?=($this->menu == 7) ? 'true' : 'false'; ?>"><i class="fas fa-star"></i><span><?=$this->lang->line('subscription') ?></span></a>
-                <div class="dropdown-menu <?=($this->menu == 7) ? 'show' : ''; ?>" aria-labelledby="navbarDropdown">
-                    <a href="<?php echo DASHURL."/admin/subscription/add-subscription"; ?>" class="dropdown-item <?php echo ($this->subMenu == 71) ? 'active' : ''; ?>"><?=$this->lang->line('addSubscription') ?></a>
-                    <a href="<?php echo DASHURL."/admin/subscription/subscription-list"; ?>" class="dropdown-item <?php echo ($this->subMenu == 72) ? 'active' : ''; ?>"> <?=$this->lang->line('subscriptionList') ?> </a>
-                </div>
-            </li>
-            <li class="nav-item">
-              <a class="list-group-item list-group-item-action nav-link" href="#"><i class="fas fa-hands-helping"></i> <span>Support</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="list-group-item list-group-item-action nav-link" href="#"><i class="fas fa-chart-pie"></i> <span>Sales Statics</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="list-group-item list-group-item-action nav-link" href="#"><i class="fas fa-users"></i> <span>Employ Management</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="list-group-item list-group-item-action nav-link" href="#"><i class="fab fa-youtube"></i> <span>Course Management</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="list-group-item list-group-item-action nav-link" href="#"><i class="fas fa-bell"></i> <span>Send Notification</span></a>
-            </li>
+            </li>            
           </ul>     
         </div>
-        <div class="fixed-footer-button">
+        <!-- <div class="fixed-footer-button">
           <ul class="navbar-nav w-100">
             <li>
               <a class="list-group-item list-group-item-action nav-link" href="<?php echo DASHURL."/auth/logout"; ?>"><i class="fas fa-star"></i><span><?=$this->lang->line('logout') ?></span></a>
             </li>
           </ul>
-
-        </div>
+        </div> -->
       </aside>
     </div>
     <!-- /#sidebar-wrapper -->

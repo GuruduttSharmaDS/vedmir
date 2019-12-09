@@ -1,19 +1,21 @@
 <?php $this->load->viewD($this->sessRole.'/inc/header'); ?>
+<?php $this->load->viewD($this->sessRole.'/inc/sidebar'); ?>
+
 <style type="text/css">
     #modalLoginAvatar .modal-dialog.cascading-modal.modal-avatar {
         margin-top: 3rem;
     }
 </style>
-<?php $this->load->viewD($this->sessRole.'/inc/sidebar'); ?>
+
 <section class="heading-section">
     <div class="row">
         <div class="col-lg-12">
             <div class="heading">
                 <div class="mr-auto">
-                    <h1><?= (isset($restaurantData->restaurantName)) ?'Update': 'Add New';?><span> Student</span></h1>
+                    <h1><?= (isset($restaurantData->restaurantName)) ? 'Update': 'Add New';?><span> Student</span></h1>
                 </div>
                 <div class="ml-auto">
-                    <a href="<?=DASHURL.'/'.$this->sessRole?>/user/user-list" class="btn btn-info">Student list</a>
+                    <a href="<?= DASHURL.'/'.$this->sessRole ?>/student/list" class="btn btn-info">Student list</a>
                 </div>
             </div>
         </div>
@@ -138,8 +140,8 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <button type="button" name="btnAdduser" class="btn btn-primary validate-form"><?php echo isset($userData->userName) ? 'Update' : 'Submit'?> </button>
-                            <a href="<?=DASHURL.'/'.$this->sessRole?>/user/user-list" class="btn btn-danger">Cancel</a>
-                            <input type="hidden" name="action" value="addUpdateUser">
+                            <a href="<?=DASHURL.'/'.$this->sessRole?>/student/list" class="btn btn-danger">Cancel</a>
+                            <input type="hidden" name="action" value="addUpdateStudent">
                             <input type="hidden" name="hiddenval" id="hiddenval" value="<?=isset($userData->userId)?$userData->userId:0;?>">
                         </div>
 

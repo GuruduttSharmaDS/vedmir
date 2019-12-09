@@ -491,51 +491,45 @@ function removePopover(){
 /***************** End Active DeActive records ****************/
 /*********************** Delete Records ***********************/
 
-function delete_row(obj,tab,id){  
+// function delete_row(obj,tab,id){  
 
-  var  $tr=$(obj).closest('tr');
+//   var  $tr=$(obj).closest('tr');
 
-  var index=$tr.index();
+//   var index=$tr.index();
 
-  var action = "CallHandlerForDeleteRecord(" + id + "," + index + ",'" + tab + "');";
+//   var action = "CallHandlerForDeleteRecord(" + id + "," + index + ",\'" + tab + "\');";
+//   console.log (action);
+//   removePopover();
+//   $(obj).popover({
+//       placement : 'top',
+//       html : true,
+//       title : 'Active/DeActive <a href="javascript:" onclick="removePopover();" class="close" data-dismiss="alert">&times;</a>',
+//       content : '<div class="row" id="popover-section"><div class="col-sm-12"><p>Are You Sure Want To Delete This Record ?</p><p class=msg></p></div><div class="col-sm-12"><a href="javascript:void(0)" id="deleteyes" onclick="' + action + '" class="btn btn-primary mr-1 btn-popover pull-right">Yes</a><a href="javascript:void(0)" onclick="removePopover();" class="btn btn-danger mr-1 pull-right">No</a></div></div>'
+//   }).popover('show');
 
-  removePopover();
-  $(obj).popover({
-      placement : 'top',
-      html : true,
-      title : 'Active/DeActive <a href="javascript:" onclick="removePopover();" class="close" data-dismiss="alert">&times;</a>',
-      content : '<div class="row" id="popover-section"><div class="col-sm-12"><p>Are You Sure Want To Delete This Record ?</p><p class=msg></p></div><div class="col-sm-12"><a href="javascript:void(0)" id="deleteyes" onclick="' + action + '" class="btn btn-primary mr-1 btn-popover pull-right">Yes</a><a href="javascript:void(0)" onclick="removePopover();" class="btn btn-danger mr-1 pull-right">No</a></div></div>'
-  }).popover('show');
+// }
 
-}
+function CallHandlerForDeleteRecord(obj,tab, id, event) {
+  // $('#deleteyes').html("Processing");
+  var  $tr  = $(obj).closest('tr');
+  var index = $tr.index();
 
-function CallHandlerForDeleteRecord(id,index, tab) {
+  var formData = { action:"deleteRecord", index:index,id:id, tab: tab, event: event};
 
-  $('#deleteyes').html("Processing");
-
-  var formData={action:"deleteRecord",tab:tab,id:id};
-
-  
-    currentAjax = 1 ;
-    $.ajax({
-
+  currentAjax = 1 ;    
+  $.ajax({
     url: DASHURL+'/admin/commonajax',
-
     type: "POST",
-
     data: formData,
-
+    cache: false,
     success: function (d) {
-
-      var $ntr = $('.table').find('tbody').find('tr:eq(' + index + ')');
-
-      $ntr.remove();
-
-      removePopover();
+      // var $ntr = $('.table').find('tbody').find('tr:eq(' + index + ')');
+      // $ntr.remove();
+      // removePopover();
+      location.reload();
 
     },
     error : function(d) {}
-
   });
 
 }
