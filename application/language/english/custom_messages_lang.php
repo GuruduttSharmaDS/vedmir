@@ -88,6 +88,7 @@ $lang['addedOn'] = 'Added On';
 $lang['status'] = 'Status';
 $lang['action'] = 'Action';
 $lang['image'] = 'Image';
+$lang['createdAt'] = 'Created AT';
 $lang['price'] = 'Price';
 $lang['description'] = 'Description';
 $lang['subject'] = 'Subject';
@@ -159,6 +160,7 @@ $lang['selectOption'] = 'Select Option';
 
 //-------------------------------- user Page ------------------------------------
 $lang['userName']   = 'User Name';
+$lang['userProfile']   = 'User Profile';
 $lang['dateOfBirth']   = 'Date Of Birth';
 $lang['gender']   = 'Gender';
 $lang['male']   = 'Male';
@@ -942,7 +944,11 @@ $lang['deletedUser'] = 'Deleted user';
 $lang['addStudent'] = 'Add Student';
 $lang['studentList'] = 'Student List';
 
-// 
+// Student
+$lang['student'] = 'Student';
+$lang['addNewStudent'] = 'Add New Student';
+
+
 $lang['totalStudents'] = 'Total Students';
 $lang['totalTeachers'] = 'Total Teachers';
 $lang['totalCategories'] = 'Total Categories';

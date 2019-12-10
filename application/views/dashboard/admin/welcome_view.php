@@ -27,7 +27,7 @@
     <div class="col-sm-3">
       <div class="statbox">
         <h4><?=$this->lang->line('totalTeachers') ?></h4>
-        <h3><?=(isset($statisticsData->totalOrder))?$statisticsData->totalOrder:0 ?></h3>
+        <h3><?=(isset($statisticsData->totalTeachers))?$statisticsData->totalTeachers:0 ?></h3>
       </div>
     </div>
 

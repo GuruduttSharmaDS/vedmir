@@ -12,10 +12,10 @@
         <div class="col-lg-12">
             <div class="heading">
                 <div class="mr-auto">
-                    <h1><?= (isset($restaurantData->restaurantName)) ? 'Update': 'Add New';?><span> Student</span></h1>
+                    <h1><?= (isset($restaurantData->restaurantName)) ? 'Update': 'Add New';?><span> <?=$this->lang->line('student')?></span></h1>
                 </div>
                 <div class="ml-auto">
-                    <a href="<?= DASHURL.'/'.$this->sessRole ?>/student/list" class="btn btn-info">Student list</a>
+                    <a href="<?= DASHURL.'/'.$this->sessRole ?>/student/list" class="btn btn-info"><?=$this->lang->line('studentList')?></a>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
                     <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <img src="<?php echo isset($userData->img) ? $userData->img : DASHSTATIC.'/img/user-icon.jpg'; ?>" alt="avatar" class="rounded-circle img-responsive image-upload-img">
+                                <img src="<?php echo (isset($userData->img) && !empty($userData->img)) ? $userData->img : DASHSTATIC.'/img/user-icon.jpg'; ?>" alt="avatar" class="rounded-circle img-responsive image-upload-img">
                             </div>
                             <div class="modal-body text-center mb-1">
                                 <h5 class="mt-1 mb-2"><?php echo isset($userData->userName) ? $userData->userName : ''; ?></h5>
@@ -79,11 +79,11 @@
                             <label>Gender <span class="text-danger">*</span></label>
                             <select class="form-control bindaddress" name="gender" id="gender" required>
 
-                                <option value="Male" <?php echo (isset($userData->gender) && $userData->gender == 'Male')? "selected":'';?> > Male</option>
+                                <option value="Male" <?php echo (isset($userData->gender) && $userData->gender == 'Male')? "selected":'';?> > <?=$this->lang->line('male')?></option>
 
-                                <option value="Female" <?php echo (isset($userData->gender) && $userData->gender == 'Female')? "selected":'';?>>Female</option> 
+                                <option value="Female" <?php echo (isset($userData->gender) && $userData->gender == 'Female')? "selected":'';?>><?=$this->lang->line('female')?></option> 
 
-                                <option value="Other" <?php echo (isset($userData->gender) && $userData->gender == 'Other')? "selected":'';?>>Other</option>
+                                <option value="Other" <?php echo (isset($userData->gender) && $userData->gender == 'Other')? "selected":'';?>><?=$this->lang->line('other')?></option>
 
                             </select>
                         </div>
@@ -140,7 +140,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <button type="button" name="btnAdduser" class="btn btn-primary validate-form"><?php echo isset($userData->userName) ? 'Update' : 'Submit'?> </button>
-                            <a href="<?=DASHURL.'/'.$this->sessRole?>/student/list" class="btn btn-danger">Cancel</a>
+                            <a href="<?=DASHURL.'/'.$this->sessRole?>/student/list" class="btn btn-danger"><?=$this->lang->line('cancel')?></a>
                             <input type="hidden" name="action" value="addUpdateStudent">
                             <input type="hidden" name="hiddenval" id="hiddenval" value="<?=isset($userData->userId)?$userData->userId:0;?>">
                         </div>

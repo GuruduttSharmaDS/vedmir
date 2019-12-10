@@ -37,11 +37,19 @@
             <li class="nav-item">
                 <a href="<?php echo DASHURL."/admin/welcome"; ?>" class="list-group-item list-group-item-action nav-link"> <i class="fas fa-tachometer-alt"></i><span><?=$this->lang->line('dashboard') ?></span> </a>
             </li>
+            <!-- Student Management -->
             <li class="nav-item dropdown <?=($this->menu == 3) ? 'show' : ''; ?>">
-                <a class="list-group-item list-group-item-action nav-link dropdown-toggle <?=($this->menu == 3) ? 'active' : ''; ?>" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="<?=($this->menu == 3) ? 'true' : 'false'; ?>"><i class="fas fa-user"></i><span><?= $this->lang->line('students') ?></span></a>
+                <a class="list-group-item list-group-item-action nav-link dropdown-toggle <?=($this->menu == 3) ? 'active' : ''; ?>" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="<?=($this->menu == 3) ? 'true' : 'false'; ?>">
+                  <i class="fas fa-user"></i><span><?= $this->lang->line('students') ?></span>
+                </a>
+
                 <div class="dropdown-menu <?=($this->menu == 3) ? 'show' : ''; ?>" aria-labelledby="navbarDropdown">
-                    <a href="<?php echo DASHURL."/admin/student/add"; ?>" class="dropdown-item <?=($this->subMenu == 31) ? 'active' : ''; ?>"><?=$this->lang->line('addStudent') ?></a>
-                    <a href="<?php echo DASHURL."/admin/student/list"; ?>" class="dropdown-item <?php echo ($this->subMenu == 32) ? 'active' : ''; ?>"> <?=$this->lang->line('studentList') ?> </a>
+                    <a href="<?php echo DASHURL."/admin/student/add"; ?>" class="dropdown-item <?=($this->subMenu == 31) ? 'active' : ''; ?>">
+                      <?=$this->lang->line('addStudent') ?>
+                    </a>
+                    <a href="<?php echo DASHURL."/admin/student/list"; ?>" class="dropdown-item <?php echo ($this->subMenu == 32) ? 'active' : ''; ?>"> 
+                      <?=$this->lang->line('studentList') ?> 
+                    </a>
                 </div>
             </li>            
           </ul>     

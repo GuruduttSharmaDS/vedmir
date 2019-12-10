@@ -8,10 +8,10 @@
     <div class="col-lg-12">
       <div class="heading">
         <div class="mr-auto">
-          <h1>Student List</h1>
+          <h1><?= $this->lang->line('studentList') ?></h1>
         </div>
         <div class="ml-auto">
-          <a href="<?=DASHURL.'/'.$this->sessRole?>/user/add-user" class="btn btn-info">Add New Student</a>
+          <a href="<?=DASHURL.'/'.$this->sessRole?>/user/add-user" class="btn btn-info"><?= $this->lang->line('addNewStudent') ?></a>
         </div>
       </div>
     </div>
@@ -21,16 +21,16 @@
 <section class="course-list">
   <div class="row">
     <div class="col-md-12">
-      <h2>Student List</h2>
+      <h2><?= $this->lang->line('studentList') ?></h2>
       <table class="table courseList-table" id="tableDataList">
         <thead>
           <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Mobile</th>
-            <th>Create Date</th>
-            <th>Action</th>
+            <th><?= $this->lang->line('image') ?></th>
+            <th><?= $this->lang->line('name') ?></th>
+            <th><?= $this->lang->line('email') ?></th>
+            <th><?= $this->lang->line('mobile') ?></th>
+            <th><?= $this->lang->line('createdAt') ?></th>
+            <th><?= $this->lang->line('action') ?></th>
           </tr>
         </thead>
         <tbody>

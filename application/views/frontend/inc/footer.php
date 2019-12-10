@@ -1,40 +1,95 @@
-﻿
+﻿<!-- Footer Section -->
+<footer>
+  <div class="topFooter">
+    <div class="container">
+      <div class="row">
 
-        <footer >
-          <div class="container">
-             <h4 class="wow pulse"><img src="<?php echo FRONTSTATIC; ?>/images/logo.png"></h4>
-             <ul class="<?=$this->lang->line('language'); ?>">
-              <!-- <li><a href="<?php //echo BASEURL; ?>/job"><?php //echo $this->lang->line('jobs'); ?></a></li> -->
-              <!-- <li><a href="<?php echo BASEURL; ?>/venue-owners"><?=$this->lang->line('venue'); ?></a></li>-->
-               <!-- <li><a href="<?php //echo BASEURL; ?>/login"><?php //echo $this->lang->line('login') ?></a></li> -->
-               <!--<li><a href="#"><?=$this->lang->line('insidersLogin') ?>Insiders Login</a></li>-->
-               <li><a href="<?php echo BASEURL; ?>/faq"><?=$this->lang->line('faq') ?></a></li>
-               <!-- <li><a href="<?php echo BASEURL; ?>/privacy-policy"><?php//echo $this->lang->line('privacyPolicy') ?></a></li> -->
-               <li><a href="<?php echo BASEURL; ?>/terms"><?=$this->lang->line('terms&Conditions') ?></a></li>
-            </ul>
-            <p><!-- <span><b><?php//echo $this->lang->line('phone') ?>:</b> +41 21 691 26 41</span>  --><span><b><?=$this->lang->line('email') ?>:</b> info@vedmir.com</span> </p>
-            <h4 class="social-icons">
-                <a href="#" class="fa fa-facebook"></a> 
-                <!--<a href="#" class="fa fa-twitter"></a>-->
-                <a href="#" class="fa fa-instagram"></a>
-                <a href="#" class="fa fa-tumblr"></a>
-           </h4>
-           <small><?=$this->lang->line('copyRight') ?> © 2018 <?=$this->lang->line('vedmir') ?>.</small>
+        <div class="col-md-4 col-sm-3">
+          <div class="footer-widget">
+            <div class="footer-logo">
+              <img src="/vedmir/system/fontend-assets/img/footer-logo.png" alt="Vedmir Logo">
+            </div>
+            <p>Vedmir provide top courses dolor sit amet, consectetur adipiscing elit. Curabitur tristique sagittis diam, id suscipit augue .</p>
           </div>
-        </footer>
-        <script src="<?php echo FRONTSTATIC; ?>/js/jquery-1.9.1.js" type="text/javascript"></script>
-          <script src="<?php echo FRONTSTATIC; ?>/js/bootstrap.js" type="text/javascript"></script>
-          <script src="<?php echo FRONTSTATIC; ?>/js/wow.min.js" type="text/javascript"></script>
-          <script src="<?php echo FRONTSTATIC; ?>/js/validate.js" type="text/javascript"></script>
-          <script src="<?php echo FRONTSTATIC; ?>/js/paging.js" type="text/javascript"></script>
-          <script src="<?php echo FRONTSTATIC; ?>/js/frontend.js" type="text/javascript"></script>
-           <script>
-          new WOW().init();
-          </script>
+          <div class="footer-icon">
+            <h4>Social media :</h4>
+            <ul>
+              <li><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="javascript:void(0);"><i class="fab fa-linkedin-in"></i></a></li>
+              <li><a href="javascript:void(0);"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="javascript:void(0);"><i class="fab fa-youtube"></i></a></li>
+            </ul>
+          </div>
+        </div>
 
-    </body>
+        <div class="col-md-3 col-sm-3">
+          <div class="footer-widget">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="javascript:void(0);">About</a></li>
+              <li><a href="javascript:void(0);">Careers</a></li>
+              <li><a href="javascript:void(0);">Blog</a></li>
+              <li><a href="javascript:void(0);">Affiliates</a></li>
+            </ul>
+          </div>
+        </div>
 
+        <div class="col-md-3 col-sm-3">
+          <div class="footer-widget">
+            <h3>Community</h3>
+            <ul>
+              <li><a href="javascript:void(0);">Membership</a></li>
+              <li><a href="javascript:void(0);">Refer a Friend</a></li>
+              <li><a href="javascript:void(0);">Gift Cards</a></li>
+            </ul>
+          </div>
+        </div>
 
+        <div class="col-md-2 col-sm-3">
+          <div class="footer-widget">
+            <h3>Support</h3>
+            <ul>
+              <li><a href="javascript:void(0);">Contact Us</a></li>
+              <li><a href="javascript:void(0);">Help and FAQ</a></li>
+              <li><a href="javascript:void(0);">Service Status</a></li>
+            </ul>
+          </div>
+        </div>
 
+      </div>
+    </div>
+  </div>
+  <div class="bottomFooter">
+    <div class="container">
+      <div class="row">
 
+        <div class="col-md-6">
+          <p>© 2019 Vedmir Inc. All rights reserved.</p>
+        </div>
+
+        <div class="col-md-6">
+          <ul>
+            <li>
+              <a href="javascript:void(0);">Terms</a>
+            </li>
+            <li>|</li>
+            <li>
+              <a href="javascript:void(0);">Privacy Policy and Cookie Policy</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="/vedmir/system/fontend-assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/vedmir/system/fontend-assets/js/popper.min.js"></script>
+  <script type="text/javascript" src="/vedmir/system/fontend-assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/vedmir/system/fontend-assets/js/mdb.min.js"></script>
+  <script src="/vedmir/system/fontend-assets/js/slick.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" src="/vedmir/system/fontend-assets/js/custom.js"></script>
+</body>
 </html>

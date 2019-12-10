@@ -38,7 +38,14 @@ class Welcome extends CI_Controller {
 	public function filter($filterBy = 'today'){
 		$this->index($filterBy);
 	}
-	public function index($filterBy = ''){
+
+	public function index ($filterBy = '') {
+		$query	= "SELECT COUNT(1) as totalUsers , (SELECT COUNT(1) FROM vm_auth WHERE `role` = 'teacher') as totalTeachers FROM vm_auth WHERE `role` = 'user'";
+		$this->outputdata['statisticsData'] =	$this->Common_model->exequery($query,1);
+		$this->load->viewD('admin/welcome_view',$this->outputdata);
+	}
+
+	public function indexOld($filterBy = '') {
 		if ($filterBy == 'lastweek'){
 			$cond = " AND (addedOn between date_sub(now(),INTERVAL 1 WEEK) and now())";
 			$cond1 = $cond2 = " AND (paymentDate between date_sub(now(),INTERVAL 1 WEEK) and now())";

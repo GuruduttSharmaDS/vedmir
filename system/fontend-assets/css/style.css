@@ -1,0 +1,1543 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.clr {
+	clear: both;
+}
+
+@media (min-width: 1320px) {
+	.container {
+		max-width: 1280px;
+	}
+}
+
+.container-fluid {
+	padding-left: 80px;
+	padding-right: 80px;
+}
+
+@font-face {
+	font-family: 'Avenir Book';
+	src: url('../font/avenir.eot');
+	src: url('../font/avenir.eot?#iefix') format('embedded-opentype'),
+	url('../font/avenir.woff2') format('woff2'),
+	url('../font/avenir.woff') format('woff'),
+	url('../font/avenir.ttf')  format('truetype'),
+	url('../font/avenir.svg#Avenir Book') format('svg');
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
+p{
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 30px;
+}
+
+span.divider-line {
+    padding: 0 10px;
+}
+
+.hidden-big {
+	display: none;
+}
+
+.postion-relative {
+	position: relative;
+}
+
+.btn1 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s;
+	border-radius: 5px;
+	font-family: "Avenir Book";
+	font-size: 16px;
+	font-weight: 800;
+	text-transform: uppercase;
+	outline: none;
+}
+
+.btn1:hover{
+	box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18);
+	transition: all 0.3s;
+}
+
+.title {
+	padding: 40px 0;
+	width: 100%;
+	max-width: 800px;
+	margin: auto;
+}
+
+.title h2 {
+	color: #000000;
+	font-family: 'Avenir Book';
+	font-size: 35px;
+	font-weight: 600;
+}
+
+.title p {
+	color: #626262;
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 28px;
+}
+
+/* slick slider */
+
+.slick-prev:before,
+.slick-next:before {
+	color: black;
+}
+
+.slick-slide img {
+	width: 100%;
+}
+
+.slick-slide {
+	transition: all ease-in-out .3s;
+	opacity: .2;
+}
+
+.slick-current {
+	opacity: 1;
+}
+
+.slick-prev {
+	left: 0px;
+}
+
+.slick-next {
+	right: 0px;
+}
+
+.slick-dots li button {
+	background-color: rgba(196, 196, 196, 0.42);
+	border-radius: 50%;
+	width: 12px;
+	height: 12px;
+}
+
+.slick-dots li.slick-active button {
+	background-color: #001735;
+	opacity: 1;
+}
+
+/* end slick slider */
+
+/***************** Start Home Page Stylesheet ******************/
+/** header style **/
+
+.header {
+	background: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.header nav {
+	box-shadow: none;
+}
+
+.header .navbar {
+	padding: 15px 0;
+}
+
+.header .navbar-dark .navbar-brand {
+	color: #fff;
+	margin-right: 10%;
+}
+
+.header .form-group.has-search {
+	position: relative;
+	width: 100%;
+	margin-bottom: 0;
+}
+
+.header .search-box {
+	width: 100%;
+	max-width: 700px;
+}
+
+.header .has-search .form-control {
+	padding-right: 35px;
+	border-radius: 5px;
+	border: 1px solid #dedede;
+	background-color: #ffffff;
+	padding: 10px 30px;
+	height: auto;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	color: #a0a0a0;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-style: italic;
+}
+
+header .has-search .form-control:focus {
+	outline: 0;
+	box-shadow:none;
+}
+
+.header .has-search .form-control-feedback {
+	position: absolute;
+	z-index: 2;
+	text-align: center;
+	pointer-events: none;
+	color: #aaa;
+	right: 20px;
+	display: flex;
+	align-items: center;
+	top: 0;
+	bottom: 0;
+}
+
+.header .navbar-nav {
+	display: flex;
+	align-items: center;
+}
+
+.header .navbar .navbar-nav .category.nav-item {
+	position: relative;
+	max-width: 163px;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+.header .navbar .navbar-nav {
+	width: 100%;
+}
+
+.header .navbar .navbar-nav .nav-item {
+	color: #525252;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	margin-right: 15px;
+}
+
+.header .navbar .navbar-nav .nav-item:last-child {
+	margin-right: 0;
+}
+
+.header .navbar .navbar-nav .nav-item .nav-link {
+	color: #525252;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 0;
+}
+
+.header .navbar .navbar-nav .cart-icon .nav-link, .header .navbar .navbar-nav .lang-icon .nav-link {
+	padding: 0 5px;
+	display: inherit;
+}
+
+.header .navbar .navbar-nav .nav-item .nav-link:hover {
+	color: #05479d;
+}
+
+.header .log-btn {
+	border-radius: 3px;
+	width: 108px;
+	height: 46px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.header .default-btn {
+	border: 1px solid #dedede;
+	background-color: #ffffff;
+	color: #525252;
+}
+
+.header .blue-btn {
+	background-color: #05479d;
+	border: 1px solid #05479d;
+	color: #fff;
+}
+
+.header button.category-btn {
+	border-radius: 5px;
+	border: 1px solid #dedede;
+	background-color: #fafafa;
+	padding: 11px 30px;
+	outline: none;
+	color: #525252;
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.header span.cart-number {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 99;
+	color: #484848;
+	background: #fff;
+	border: 1px solid #dedede;
+	width: 21px;
+	height: 21px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: -0.22px;	
+}
+
+.header .lang {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 99;
+	color: #fff;
+	background-color: #ff2e48;
+	border: 1px solid #dedede;
+	width: 21px;
+	height: 21px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: -0.22px;	
+}
+
+.header .logo-section {
+	display: flex;
+	align-items: center;
+}
+
+/* end header style */
+
+/* banner section */
+
+.banner-item {
+	position: relative;
+}
+
+.banner-image {
+	width: 100%;
+}
+
+.banner-image img {
+	width: 100%;
+}
+
+.banner-caption {
+	position: absolute;
+	top: 0;
+	right: 70px;
+	width: 100%;
+	max-width: 680px;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.banner-caption .banner-title {
+	color: #ffffff;
+	font-family: "Avenir Book";
+	font-size: 50px;
+	font-weight: 600;
+	margin-bottom: 15px;
+}
+
+.banner-caption p {
+	color: #ffffff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 32px;
+	margin-bottom: 25px;
+}
+
+.banner-caption .signup-btn {
+	margin: 0;
+}
+
+.banner-slider .slick-active .banner-title {
+	animation:fadeInDown 0.5s both 0.5s;
+}
+
+.banner-slider .slick-active p {
+	animation:fadeInLeft 1s both 0.9s;
+}
+
+.banner-slider .slick-active .signup-btn {
+	animation:fadeInUp 1s both 1.3s;
+}
+
+.banner-slider .slick-prev, .banner-slider .slick-next {
+	background: #fff;
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	opacity: 0.4;
+	z-index: 99;
+	transition: all 0.3s;
+}
+
+.banner-slider .slick-prev:hover, .banner-slider .slick-next:hover {
+	opacity: 1;
+	background: #fff;
+}
+
+.banner-slider .slick-prev:before, .banner-slider .slick-next:before {
+	font-size: 31px;
+	font-weight: bold;
+}
+
+.banner-notification {
+	height: 86px;
+	background-color: #001735;
+	display: flex;
+	align-items: center;
+	margin-top: -8px;
+}
+
+.banner-notiList {
+	display: flex;
+	align-items: center;
+}
+
+.banner-notiList .content {
+	margin-left: 20px;
+}
+
+.banner-notiList h5 {
+	color: #ffffff;
+	font-family: "Avenir Book";
+	font-size: 20px;
+	font-weight: 800;
+	margin-bottom: 5px;
+}
+
+.banner-notiList h6 {
+	color: #ffffff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	margin-bottom: 0px;
+}
+
+.banner-notiList:nth-child(2) {
+	justify-content: center;
+}
+
+.banner-notiList:nth-child(3) {
+	justify-content: flex-end;
+}
+
+/* end banner section */
+
+/* popular category */
+
+.popular-category {
+	padding: 40px 0;
+	background-color: #fafafa;
+}
+
+.popular-category h6 {
+	color: #6f6f6f;
+	font-family: "Avenir Book";
+	font-size: 18px;
+	font-weight: 500;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.popular-category .mainCategory {
+	width: 38%;
+	margin: 0 1%;
+	position: relative;
+}
+
+.popular-category .subCategory {
+	width: 61%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.popular-category .categoy-list {
+	display: flex !important;
+	align-items: center;
+}
+
+.popular-category .subCategory-list {
+	width: 48%;
+	margin: 1% 1%;
+	position: relative;
+}
+
+.popular-category .subCategory-list img {
+	width: 100%;
+}
+
+.popular-category .subCategory-content {
+	position: absolute;
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+
+.popular-category .mainCategory img {
+	width: 100%;
+}
+
+.popular-category .popular-category-content {
+	position: absolute;
+	bottom: 25px;
+	left: 25px;
+}
+
+.popular-category .popular-category-content h3 {
+	color: #ffffff;
+	font-family: "Avenir Book";
+	font-size: 45px;
+	font-weight: 800;
+	margin-bottom: 5px;
+}
+
+.popular-category .popular-category-content p {
+	color: #ffffff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	margin-bottom: 0;
+}
+
+.popular-category .subCategory-content h3 {
+	color: #ffffff;
+	font-family: "Avenir Book";
+	font-size: 28px;
+	font-weight: 800;
+	margin-bottom: 5px;
+}
+
+.popular-category .subCategory-content p {
+	color: #ffffff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	margin-bottom: 0;
+}
+
+.signup-section ul {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 50px 0;
+}
+
+.signup-section ul li {
+	text-align: center;
+	padding: 0 90px;
+	position: relative;
+}
+
+.signup-section ul li:after {
+	content: "";
+	background: #efefef;
+	width: 1px;
+	height: 65%;
+	position: absolute;
+	right: 0;
+	bottom: 20px;
+}
+
+.signup-section ul li:last-child:after {
+	display: none;
+}
+
+.signup-section ul li h5 {
+	color: #000000;
+	font-family: "Avenir Book";
+	font-size: 28px;
+	font-weight: 800;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.signup-section ul li p {
+	color: #626262;
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 28px;
+}
+
+.signup-btn {
+	width: 232px;
+	height: 60px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14);
+	border-radius: 5px;
+	background-color: #05479d;
+	color: #ffffff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #05479d;
+	transition: all 0.3s;
+	margin: auto;
+	margin-bottom: 15px;
+}
+
+.signup-btn:hover {
+	box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+}
+
+/* end popular category */ 
+
+/* popuplar course section */
+
+.popular-section {
+	padding: 40px 0;
+}
+
+.popular-course .slick-prev, .popular-course .slick-next, .recent-view-slider .slick-prev, .recent-view-slider .slick-next, .popular-category-slider .slick-prev, .popular-category-slider .slick-next {
+	width: 56px;
+	height: 56px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.09);
+	background-color: #ffffff;
+	border-radius: 50%;  
+	transition: all 0.3s;
+}
+
+.popular-course .slick-prev {
+	left: -80px;
+}
+
+.recent-view-slider .slick-prev, .popular-category-slider .slick-prev {
+	left: -33px;
+	z-index: 9;
+}
+
+.popular-course .slick-prev:before, .recent-view-slider .slick-prev:before, .popular-category-slider .slick-prev:before, .popular-course .slick-next:before, .recent-view-slider .slick-next:before, .popular-category-slider .slick-next:before {
+	color: #506273;
+	font-weight: bold;
+	font-size: 30px;
+	opacity: 1;
+}
+
+.popular-course .slick-prev.slick-disabled, .recent-view-slider .slick-prev.slick-disabled, .popular-category-slider .slick-prev.slick-disabled, .popular-course .slick-next.slick-disabled, .recent-view-slider .slick-next.slick-disabled, .popular-category-slider .slick-next.slick-disabled {
+	opacity: 0;
+}
+
+.popular-course .slick-next {
+	right: -80px;
+}
+
+.recent-view-slider .slick-next, .popular-category-slider .slick-next {
+	right: -33px;
+	z-index: 9;
+}
+
+.course-details {
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.19);
+	border-radius: 5px;
+	background-color: #ffffff;
+	margin-bottom: 25px;
+	margin-top: 5px;
+	position: relative;
+}
+
+.course-details img {
+	width: 100%;
+}
+
+.course-details .course-content {
+	padding: 10px 15px;
+}
+
+.course-details .course-content h4 {
+	color: #000000;
+	font-family: "Avenir Book";
+	font-size: 17px;
+	font-weight: 800;
+	line-height: 21px;
+	margin-bottom: 12px;
+}
+
+.course-details .course-content p {
+	color: #626262;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 20px;
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+}
+
+.course-details .course-content p span {
+	margin: 0 10px;
+}
+
+.course-details .course-content .price {
+	color: #000000;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+	letter-spacing: 0.83px;
+	margin-bottom: 15px;
+}
+
+.course-details .course-content .price del {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 600;
+	letter-spacing: 0.67px;
+	text-decoration: line-through;
+	margin-left: 20px;
+	color: #717171;
+}
+
+.course-content .author-part {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.course-content .author-part img {
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	margin-right: 5px;
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+	filter: grayscale(100%);
+}
+
+.course-content .author-part .author-name {
+	color: #848484;
+	font-family: "Avenir Book";
+	font-size: 13px;
+	font-weight: 500;
+	letter-spacing: -0.31px;
+	line-height: 22px;
+}
+
+.explore-btn {
+	width: 235px;
+	height: 54px;
+	border-radius: 5px;
+	border: 1px solid #000000;
+	background-color: #ffffff;
+	color: #000000;
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+}
+
+.popular-course {
+	margin-bottom: 50px;
+}
+
+.popular-section .explore-btn {
+	margin: auto;
+}
+
+.recently-viewed-course {
+	padding: 20px 0;
+}
+
+.recently-viewed-course .title {
+	margin: 0;
+	padding-bottom: 10px;
+}
+
+.recent-view-slider .slick-slide {
+	margin: 0 10px;
+	opacity: 1;
+}
+
+.bestseller-caption {
+	
+	position: absolute;
+	top: 25px;
+	left: 0;
+}
+
+.bestSeller {
+	color: #000000;
+	font-family: 'Roboto', sans-serif;
+	font-size: 11px;
+	font-weight: 500;
+	letter-spacing: 0.46px;
+	margin-bottom: 0;
+	background: url(../img/bestseller-bg.png) no-repeat;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 79px;
+	height: 20px;
+}
+
+/* end popular section */
+
+/* app section */
+
+.app-section {
+	background: url(../img/app-background.png) no-repeat;
+	background-size: cover;
+	padding: 120px 0 100px;
+}
+
+.app-section h3 {
+	color: #ffffff;
+	font-family: 'Avenir Book';
+	font-size: 40px;
+	font-weight: 500;
+}
+
+.app-section p {
+	color: #ffffff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 24px;
+	font-weight: 300;
+	line-height: 40px;
+	margin-bottom: 30px;
+}
+
+.app-section .app-btn-group {
+	display: flex;
+}
+
+.app-section .app-btn-group a {
+	margin-right: 15px;
+}
+
+.app-section .app-btn-group a:last-child {
+	margin-right: 0;
+}
+
+/* end app section */
+
+/* news announced section */
+
+.news-section {
+	padding: 60px 0 0px;
+}
+
+.news-section .card .card-body {
+	padding: 25px 20px;
+}
+
+.news-section .card .card-body small {
+	color: #767676;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.news-section .card .card-body h4 {
+	color: #000000;
+	font-family: 'Avenir Book';
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 1.5em;
+}
+
+/* end news announced section */
+
+/* testimonial section **/
+
+section.testimonial-section {
+	padding: 50px 0 60px;
+}
+
+.testimonial-slider .slick-slide {
+	margin: 0 10px;
+}
+
+section.testimonial-section .slick-dots {
+	bottom: -25px;
+	position: unset;
+	margin-top: 30px;
+}
+
+section.testimonial-section .slick-prev, section.testimonial-section .slick-next {
+	display: none !important;
+}
+
+section.testimonial-section .slick-slide {
+	opacity: 1;
+}
+
+section.testimonial-section .slick-list {
+	padding: 10px 0;
+}
+
+.testimonial-content {
+	text-align: center;
+	padding: 30px 25px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.19);
+	border-radius: 5px;
+	background-color: #ffffff;
+}
+
+.testimonial-content img {
+	width: 79px;
+	height: 79px;
+	border-radius: 50%;
+	margin: auto; 
+	margin-bottom: 20px;
+}
+
+.testimonial-content h5 {
+	color: #000000;
+	font-family: 'Avenir Book';
+	font-size: 24px;
+	font-weight: 600;
+	margin-bottom: 15px;
+}
+
+.testimonial-content p {
+	color: #626262;
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	font-weight: 300;
+	line-height: 28px;
+	font-style: italic;
+	margin-bottom: 30px;
+}
+
+/* end testimonial section */
+
+/*** footer ***/
+
+.topFooter {
+	background: url(../img/footer-background.png) no-repeat;
+	background-size: cover;
+	padding: 65px 0 40px;
+}
+
+.footer-widget .footer-logo {
+	margin-bottom: 25px;
+}
+
+.footer-widget p {
+	color: #cddef3;
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 23px;
+	padding-right: 80px;
+}
+
+.footer-icon {
+	padding-top: 25px;
+}
+
+.footer-icon h4 {
+	color: #9da5b1;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	margin-bottom: 20px;
+}
+
+.footer-icon ul {
+	list-style: none;
+	display: flex;
+	margin-bottom: 0;
+}
+
+.footer-icon ul li {
+	margin-right: 25px;
+}
+
+.footer-icon ul li a {
+	color: #fff;
+	font-size: 16px;
+	opacity: 0.7;
+	transition: all 0.3s;
+}
+
+.footer-icon ul li a:hover {
+	opacity: 1;
+}
+
+.footer-widget h3 {
+	color: #ffffff;
+	font-family: 'Avenir Book';
+	font-size: 18px;
+	font-weight: 800;
+	margin-bottom: 15px;
+}
+
+.footer-widget ul {
+	list-style: none;
+	margin-bottom: 0;
+}
+
+.footer-widget li {
+	margin: 5px 0;
+}
+
+.footer-widget li a {
+	color: #ccddf2;
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 30px;
+	transition: all 0.3s;
+}
+
+.footer-widget li a:hover {
+	color: #fff;
+	transition: all 0.3s;
+}
+
+.bottomFooter {
+	background-color: #011125;
+	padding: 20px 0;
+}
+
+.bottomFooter p {
+	color: #849ab6;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	margin-bottom: 0;
+}
+
+.bottomFooter ul {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	margin-bottom: 0;
+}
+
+.bottomFooter li {
+	color: #849ab6;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	margin: 0 5px;
+}
+
+.bottomFooter ul li a {
+	color: #849ab6;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+/***************** Start Login Signup Page Stylesheet ******************/ 
+
+section.formPage-section {
+    padding: 80px 0;
+}
+
+section.formPage-section form {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.19);
+}
+
+.hide{
+	display: none !important;
+}
+
+.show{
+	display: inherit !important;
+}
+
+.radio-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.custom-control-label {
+    font-weight: 400;
+}
+
+/***************** Start Login Signup Page Stylesheet ******************/ 
+
+/***************** End Home Page Stylesheet ******************/
+
+/***************** Start After Signin Page Stylesheet ******************/
+.inner-banner{
+    position: relative;
+}
+
+.inner-banner-img {
+    width: 100%;
+}
+
+.inner-banner-img img {
+    width: 100%;
+}
+
+.inner-banner-caption {
+	position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    bottom: 0;
+}
+
+.inner-banner-caption h1{
+	color: #ffffff;
+	font-family: "Avenir Book";
+	font-size: 40px;
+	font-weight: 800;
+}
+
+.inner-banner-caption p{
+	color: #ffffff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 28px;
+}
+
+.user_name_section .dropdown-toggle::after{
+	display: none;
+}
+
+.upgrade-btn {
+	width: 139px;
+	height: 45px;
+	border-radius: 5px;
+	background-color: #72a736;
+	color: #ffffff;
+	font-family: "Avenir Book";
+	font-size: 16px;
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #72a736;
+	outline: none;
+}
+
+.upgrade-btn:focus{
+	outline: none;
+}
+
+.user-dropdown{
+	width: 290px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+	border-radius: 5px;
+	background-color: #ffffff;
+	right: 0;
+	left: inherit;
+	border: 0px;
+}
+
+.user-dropdown .dropdown-header {
+	padding: 20px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+	background-color: #ffffff;
+	margin-bottom: 8px;
+}
+
+.user-img .short-name {
+	width: 43px;
+	height: 43px;
+	background-color: #001735;
+	color: #ffffff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 500;
+	letter-spacing: 0.67px;
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+}
+
+.user-img .short-name img{
+	width: 43px;
+	height: 43px;
+	border-radius: 50%;
+}
+
+.user-caption {
+    margin-left: 15px;
+}
+
+.user-caption h3 {
+    color: #000000;
+    font-family: "Avenir Book";
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 0px;
+}
+
+.user-caption p {
+    color: #6a6a6a;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.user-dropdown a.dropdown-item{
+	padding: 8px 30px;
+	color: #6a6a6a !important;;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.user-dropdown .dropdown-item:focus, .user-dropdown .dropdown-item:hover, .user-img .user-dropdown .dropdown-item:active {
+	background-color: #f4faff;
+}
+
+.user_name_section .user-img {
+    cursor: pointer;
+}
+
+.left-title{
+	margin: 0;
+}
+
+.left-title p{
+	margin-bottom: 0;
+}
+
+/***************** End After Signin Page Stylesheet ******************/
+
+/***************** Start Course Details Page Stylesheet ******************/
+.breadcrumb{
+	background: transparent;
+    margin-bottom: 0;
+    padding: 15px 0;
+    padding-left: 80px;
+}
+
+.breadcrumb-item a{
+	color: #7a7a7a;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    padding-right: 5px;
+}
+
+.breadcrumb-item+.breadcrumb-item {
+    padding-left: 5px;
+}
+
+.detailPage-banner{
+	background: url(../img/course-detail-banner.png) no-repeat;
+	background-size: cover;
+	background-position: right;
+}
+
+img.banner-img {
+    width: 100%;
+}
+
+.inner-detailPage-banner {
+    padding: 35px 0;
+    display: flex;
+    align-items: center; 
+    bottom: 0;
+}
+
+.inner-detailPage-banner ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.inner-detailPage-banner ul li {
+    width: 50%;
+}
+
+.inner-detailPage-banner ul li:last-child {
+    padding-left: 30px;
+}
+
+.updateDetail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.updateDetail p:last-child {
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+.raiting-part{
+	display: flex;
+	align-items: center;
+}
+
+.raiting-star .fa{
+	color: #e3e3e3;
+	font-size: 15px;
+}
+
+.raiting-star .fa.checked {
+	color: #f9cd4a;
+}
+
+.raitingCount{
+	margin-left: 10px;
+	color: #ffffff;
+	font-family: "Avenir Book";
+	font-size: 13px;
+	font-weight: 500;
+	letter-spacing: -0.31px;
+}
+
+.inner-detailPage-banner h1{
+	color: #ffffff;
+	font-family: "Avenir Book";
+	font-size: 34px;
+	font-weight: 500;
+	margin-bottom: 15px;
+}
+
+.updateDetail p{
+	color: #fff;
+}
+
+.inner-detailPage-banner .discription{
+	color: #ffffff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 30px;
+	margin-bottom: 15px;
+}
+
+.inner-detailPage-banner .raiting-part{
+	margin-bottom: 5px;
+}
+
+.price{
+	color: #ffffff;
+	font-family: "Avenir Book";
+	font-size: 40px;
+	font-weight: 800;
+}
+
+
+.price del{
+	color: #ffffff;
+	font-size: 24px;
+	font-weight: 500;
+	letter-spacing: -0.38px;
+	padding: 0 25px;
+}
+
+.price .discount {
+	color: #f9cd4a;
+	font-size: 24px;
+	font-weight: 800;
+	letter-spacing: 1px;
+}
+
+.inner-detailPage-banner .price {
+	margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.btn-red{
+	width: 213px;
+	height: 60px;
+	background-color: #de5c5c;
+	border: 1px solid #de5c5c;
+}
+
+.btn-white{
+	width: 213px;
+	height: 60px;
+	background-color: #ffffff;
+	border: 1px solid #ffffff;
+}
+
+.btn-wishlist{
+	width: 63px;
+	height: 60px;
+	background-color: #001735;
+	border: 1px solid #fff;
+	color: #fff;
+	transition: all 0.3s;
+}
+
+.btn-wishlist:hover {
+    background: white;
+    color: #d32f2f;
+}
+
+.inner-detailPage-banner .btn1{
+	margin-right: 10px;
+}
+
+.inner-detailPage-banner p{
+	color: #fff;
+	    margin-bottom: 10px;
+}
+
+.inner-detailPage-banner ul li .videoPart video {
+    width: 100%;
+    height: auto;
+}
+.inner-detailPage-banner ul li .videoPart {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+.list-section {
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    background-color: #fafafa;
+    padding: 35px 25px;
+    margin-bottom: 20px;
+}
+
+.list-section ul {
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.list-section ul li {
+        display: flex;
+    align-items: baseline;
+    margin-bottom: 15px;
+    text-align: left;
+    color: #626262;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.list-section ul li span{
+    width: 16px;
+    text-align: center;
+    margin-right: 15px;
+}
+
+.coursesDetails-section h3{
+	color: #000000;
+	font-family: "Avenir Book";
+	font-size: 19px;
+	font-weight: 800;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+
+section.coursesDetails-section {
+    padding: 60px 0 0;
+}
+
+.coursesDetails-section p{
+	color: #626262;
+	font-family: 'Roboto', sans-serif;
+	font-size: 17px;
+	font-weight: 400;
+	line-height: 28px;
+    margin-bottom: 25px;
+}
+
+.right-sidebar {
+    margin-right: 30px;
+}
+
+.course-for{
+	margin-bottom: 30px;
+}
+
+.course-for ul{
+	margin-bottom: 0;
+}
+
+.course-for ul li {
+    color: #626262;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.author-brifing {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.author-info ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    flex-wrap: wrap;
+    padding-left: 30px;
+}
+
+.author-info ul li {
+    width: 50%;
+    color: #626262;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 30px;
+}
+
+.author-information {
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    background-color: #fafafa;
+    padding: 40px 50px 20px;
+}
+
+.author-info ul li span {
+    color: #231f20;
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/***************** End Course Details Page Stylesheet ******************/

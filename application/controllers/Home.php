@@ -36,6 +36,7 @@ class Home extends CI_Controller {
 		$this->outputData['fileName'] = $this->common_lib->getPublicFileName('stream.mp4');
 		$this->load->viewF('home_view',$this->outputData);
 	}
+
 	//Home page
 	public function streming($fileName) {
 		if($this->common_lib->checkFileAccessToken()){
@@ -94,11 +95,6 @@ class Home extends CI_Controller {
 		$this->load->viewF('contact_view',$this->outputData);
 	}
 
-	public function signup() {
-
-		$this->outputData['title'] = 'Venue Signup';
-		$this->load->viewF('signup_view',$this->outputData);
-	}
 	//Login page
 	public function login($role = 'restaurant') {
 		$this->session->set_userdata(PREFIX.'sessRole', $role);
@@ -146,6 +142,13 @@ class Home extends CI_Controller {
 		$this->outputData['title'] = 'Login';
 		$this->load->viewF('login_view',$this->outputData);
 	}
+
+	public function signup() {
+
+		$this->outputData['title'] = 'Venue Signup';
+		$this->load->viewF('signup_view',$this->outputData);
+	}
+
 	public function privacy() {
 		$this->outputData['title'] = 'Privacy Policy';
 		$this->load->viewF('privacy_view',$this->outputData);
