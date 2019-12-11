@@ -2339,4 +2339,13 @@ abstract class REST_Controller extends CI_Controller {
             exit;
         }
     }
+
+    // Check user authentication
+    public function checkUserAuthentication () {
+        // Check User Authorization
+        $token = $this->input->get_request_header('Authorization', TRUE);
+        if ($token == '' && !$this->common_lib->validateToken($token)) {
+            $this->response(['status' => FALSE, 'message' => $this->lang->line('unAuthorized') ], REST_Controller::HTTP_UNAUTHORIZED);
+        }
+    }
 }

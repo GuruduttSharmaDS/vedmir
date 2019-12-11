@@ -195,7 +195,7 @@ class User extends REST_Controller {
                     $userData = $this->Common_model->exequery("SELECT userId $this->userProfileQry ,(SELECT (CASE WHEN count(*) > 0 then 1 else 0 end) as membership_count FROM vm_user_memberships WHERE startDate <= '".date('Y-m-d')."' AND endDate >= '".date('Y-m-d')."' AND userId=".$roleData->roleId." AND subscriptionStatus ='Active' ORDER BY membershipId desc limit 0,1) as `membership` from vm_user WHERE userId='".$roleData->roleId."'" ,true);
                     if($updatetStatus){
 
-                        if ($userimage != '')
+                        if ($userimage != '' && file_exists(ABSUPLOADPATH."/user_images/".$userimage))
                             unlink(ABSUPLOADPATH."/user_images/".$userimage);
 
                          $this->response(['status' => TRUE,'message' => $this->lang->line('successImage'),'data' => $userData], REST_Controller::HTTP_OK);
