@@ -22,7 +22,14 @@ class Common_lib {
 		else if(isset($CI->session->userdata[PREFIX."sessLang"]) && !empty($CI->session->userdata[PREFIX."sessLang"])) 
 			$language =  $CI->session->userdata[PREFIX."sessLang"];	
 
-		$language=($language=='Anglais')?'french':$language;		
+		// For Rest APIs
+		$getallheaders = getallheaders();	
+		if (isset ($getallheaders['language'])) {
+			if ($getallheaders['language'] == 'rusia') {
+				$language = "rusia";
+			}
+		}
+
 		$CI->lang->load('custom_messages',$language);		
 
 	}
