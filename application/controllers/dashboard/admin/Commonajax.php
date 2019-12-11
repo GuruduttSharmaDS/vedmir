@@ -66,6 +66,17 @@ class Commonajax extends CI_Controller {
 			$return = $this->getAdminNotification($_POST);
 		else if($action == "GetNotificationList" )
 			$return = $this->GetNotificationList($_POST);
+		/******************************** category Section *****************************/
+		else if($action == "addUpdateCategory" )
+			$return = $this->addUpdateCategory($_POST);
+		else if( $action == "getCategoryList" ) 
+			$return = $this->getCategoryList($_POST);
+		/******************************** End category Section *************************/
+		/******************************** Course Section *****************************/
+		
+		else if( $action == "getCourseList" ) 
+			$return = $this->getCourseList($_POST);
+		/******************************** End Course Section *************************/
 
 		$this->output->set_content_type('application/json')->set_output(json_encode($return));
 	}
@@ -715,6 +726,211 @@ class Commonajax extends CI_Controller {
 
                 $nestedData['action'] = '<a class="btn btn-primary btn-custom-sm" title="view" href="'.DASHURL.'/admin/student/detail/'.$row->userId.'"><i class="fa fa-eye"></i></a><a class="btn btn-info btn-custom-sm" title="Edit" href="'.DASHURL.'/admin/student/add/'.$row->userId.'"><i class="fa fa-pen"></i></a><button onclick="return confirm(\'Are You Sure Want To Update This Record ?\')? CallHandlerForDeleteRecord(this,\'user\','.$row->userId.','.$updateStatus.'):\'\';" class="btn btn-light btn-custom-sm '.$btnClass.'" title="Active/DeActive" data-status="'.$nestedData['status'].'"><i class="fa fa-circle"></i></button><button class="btn btn-danger btn-custom-sm" title="Delete Student"  onclick="return confirm(\'Are You Sure Want To Delete This Record ?\')? CallHandlerForDeleteRecord(this,\'user\','.$row->userId.',2):\'\';"><i class="fa fa-trash"></i></button>';
 
+                $data[] = $nestedData;
+
+            }
+        }
+          
+        return $json_data = array("draw" => intval($this->input->post('draw')), "recordsTotal"    => intval($totalData), "recordsFiltered" => intval($totalFiltered), "data" => $data );
+	}
+
+	public function getCategoryList() {
+
+		$columns = array( 0 => "categoryId", 1 => "idParent", 2 => "categoryName", 3 => "status", 4 => "addedOn", 5 => "id");
+        $limit = $this->input->post('length');
+        $start = $this->input->post('start');
+        $order = $columns[$this->input->post('order')[0]['column']];
+        $dir = $this->input->post('order')[0]['dir'];
+
+        $cond = " order by $order $dir LIMIT $start, $limit ";
+        $totalDataCount = $this->Common_model->exequery("SELECT count(*) as total from vm_category as cat where cat.status !=2 ",1);
+        //as ca where ca.status != 2",1
+        $totalData = ( isset($totalDataCount->total)  && $totalDataCount->total > 0 ) ? $totalDataCount->total : 0;
+            
+        $totalFiltered = $totalData; 
+        $qry = "SELECT cat.* from vm_category as cat where cat.status !=2 "; 
+        //as ca where ca.status != 2
+
+        if(empty($this->input->post('search')['value']))
+
+            $queryData = $this->Common_model->exequery($qry.$cond);
+
+        else {
+            $search = $this->input->post('search')['value']; 
+            if (!empty($search))
+            	$search = str_replace(['"',"'"], ['', ''], $search);
+
+            $searchCond = " AND (cat.categoryName LIKE  '%".$search."%' OR cat.status LIKE  '%".$search."%'  ) ";
+            $cond = $searchCond.$cond;
+            $queryData = $this->Common_model->exequery($qry.$cond);
+
+            $totalDataCount = $this->Common_model->exequery("SELECT count(*) as total from vm_category as cat where cat.status !=2  ".$searchCond,1);
+            //as us where ca.status != 2
+
+            $totalFiltered = ( isset($totalDataCount->total)  && $totalDataCount->total > 0 ) ? $totalDataCount->total : 0;
+        }
+        $data = array();
+       // echo "bbbbbbbbbbbbbvcdsasca";exit;
+
+        if(!empty($queryData))
+        {
+            foreach ($queryData as $row)
+            {	
+            		
+                /*$nestedData['img'] = ( $row->image != '' ) ? '<img src="'.$row->image.'" width="30px" height="30px">' : "";*/
+                $nestedData['srNo'] = ++$start;
+                $nestedData['categoryName'] = $row->categoryName;
+                
+				$updateStatus = ($row->status == 1) ? 0 : 1;
+                
+                $nestedData['addedOn'] = $row->addedOn;
+                if ( $row->status == 0 ) {
+                	$nestedData['status'] = "Active";
+                	$btnClass =  "text-success";
+                }
+                else {
+                	$nestedData['status'] =  "DeActive";
+                	$btnClass =  "text-danger";
+                }
+
+
+				$nestedData['action'] = '<a class="btn btn-info btn-custom-sm" title="Edit" href="'.DASHURL.'/admin/category/add_category/'.$row->categoryId.'"><i class="fa fa-pen"></i></a>
+				<button onclick="return confirm(\'Are You Sure Want To Update This Record ?\')? CallHandlerForDeleteRecord(this,\'category\','.$row->categoryId.','.$updateStatus.'):\'\';" class="btn btn-light btn-custom-sm '.$btnClass.'" title="Active/DeActive" data-status="'.$nestedData['status'].'"><i class="fa fa-circle"></i></button>
+
+				<button class="btn btn-danger btn-custom-sm" title="Delete Record"  onclick="return confirm(\'Are You Sure Want To Delete This Record ?\')? CallHandlerForDeleteRecord(this,\'category\','.$row->categoryId.',2):\'\';"><i class="fa fa-trash"></i></button>
+				';
+                //<a class="btn btn-primary btn-custom-sm" title="view" href="'.DASHURL.'/admin/user/detail/'.$row->userId.'"><i class="fa fa-eye"></i></a>
+                $data[] = $nestedData;
+
+            }
+        }
+          
+        return $json_data = array("draw" => intval($this->input->post('draw')), "recordsTotal"    => intval($totalData), "recordsFiltered" => intval($totalFiltered), "data" => $data );
+	}
+
+	public function addUpdateCategory($data) {
+    	//return $data;
+		if(isset($data['categoryName']) && !empty($data['categoryName'])) {
+			$id = (isset($data['hiddenval']) && !empty($data['hiddenval']) && $data['hiddenval'] > 0 ) ? $data['hiddenval'] : '';
+			$cond = ($id)?" AND categoryId !='".$id."'":"";
+			$isExist = $this->Common_model->selRowData("vm_category","categoryId, idParent, categoryName","categoryName = '".$_POST['categoryName']."'".$cond);
+			if (isset($isExist->categoryName))
+				return array("valid" => false, "msg" => "Name is already exists.");
+			
+			$insertData = array();
+			$insertData['categoryName']	=   trim($_POST['categoryName']);
+			$insertData['status'] 	=  $data['status']; 
+			$insertData['updatedOn']=   date('Y-m-d H:i:s');
+			$insertData['idParent'] = trim($_POST['idParent']);
+			
+			
+
+			if( $id > 0 ){
+				$updateStatus = $this->Common_model->update("vm_category", $insertData, "categoryId = ".$id);
+				$userAddId = $id;
+				/*if( $updateStatus )
+					$authStatus = $this->createAuth($userAddId, $role ='user', $insertData['email'], '',1);*/
+			}else {
+
+				$insertData['addedOn'] = date('Y-m-d H:i:s');
+				$authStatus = '';
+				$this->db->trans_start();
+				$updateStatus = $this->Common_model->insertUnique("vm_category", $insertData);
+				$userAddId = $updateStatus;
+				/*if($updateStatus)
+				   $authStatus = $this->createAuth($updateStatus, $role ='user', $insertData['email'], trim($_POST['password']),0);*/
+
+				if ($this->db->trans_status() === FALSE ||  !$updateStatus){
+					$this->db->trans_rollback();
+					$updateStatus = false;
+				}else
+					$this->db->trans_commit();
+			}
+
+			if($updateStatus) {
+				return array("valid" => true, "msg" => ( $id > 0 )?"Category Updated Successfully!":"Category Added Successfully!");
+			}
+			else
+				return array("valid" => false, "msg" => "Something went wrong.");
+			//Something went wrong.
+
+		}
+		else 
+			return array("valid" => false, "data" => array(), "msg" => "Category name is required!");
+	}
+
+	public function getCourseList() {
+
+		$columns = array( 0 => "courseId", 1 => "userId", 2 => "categoryId", 3 => "courseName", 4 => "thumbnailImage", 5 => "courseTitle", 6 => "courseDescription", 7 => "coursePrice", 8 => "coursePriceAfterDiscount", 9 => "status", 10 => "addedOn", 11 => "id");
+        $limit = $this->input->post('length');
+        $start = $this->input->post('start');
+        $order = $columns[$this->input->post('order')[0]['column']];
+        $dir = $this->input->post('order')[0]['dir'];
+
+        $cond = " order by $order $dir LIMIT $start, $limit ";
+        $totalDataCount = $this->Common_model->exequery("SELECT count(*) as total from vm_course as cau where cau.status !=2 ",1);
+        //as ca where ca.status != 2",1
+        $totalData = ( isset($totalDataCount->total)  && $totalDataCount->total > 0 ) ? $totalDataCount->total : 0;
+            
+        $totalFiltered = $totalData; 
+        $qry = "SELECT cau.*, cat.categoryName from vm_course as cau left join vm_category as cat on cat.categoryId= cau.categoryId where cau.status !=2 "; 
+        //as ca where ca.status != 2
+
+        if(empty($this->input->post('search')['value']))
+
+            $queryData = $this->Common_model->exequery($qry.$cond);
+
+        else {
+            $search = $this->input->post('search')['value']; 
+            if (!empty($search))
+            	$search = str_replace(['"',"'"], ['', ''], $search);
+
+            $searchCond = " AND (cau.courseName LIKE  '%".$search."%' OR cau.status LIKE  '%".$search."%' OR cau.coursePrice LIKE  '%".$search."%'  ) ";
+            $cond = $searchCond.$cond;
+            $queryData = $this->Common_model->exequery($qry.$cond);
+
+            $totalDataCount = $this->Common_model->exequery("SELECT count(*) as total from vm_course as cau where cat.status !=2  ".$searchCond,1);
+            //as us where ca.status != 2
+
+            $totalFiltered = ( isset($totalDataCount->total)  && $totalDataCount->total > 0 ) ? $totalDataCount->total : 0;
+        }
+        $data = array();
+       // echo "bbbbbbbbbbbbbvcdsasca";exit;
+        //print_r($queryData);die;
+
+        if(!empty($queryData))
+        {
+            foreach ($queryData as $row)
+            {	
+            		
+                /*$nestedData['img'] = ( $row->image != '' ) ? '<img src="'.$row->image.'" width="30px" height="30px">' : "";*/
+                $nestedData['srNo'] = ++$start;
+                $nestedData['categoryName'] = $row->categoryName;
+                $nestedData['courseName'] = $row->courseName;
+                $nestedData['coursePrice'] = $row->coursePrice;
+
+                
+                
+				$nestedData['addedOn'] = $row->addedOn;
+				$updateStatus = ($row->status == 1) ? 0 : 1;
+				
+                if ( $row->status == 0 ) {
+                	$nestedData['status'] = "Active";
+                	$btnClass =  "text-success";
+                }
+                else {
+                	$nestedData['status'] =  "DeActive";
+                	$btnClass =  "text-danger";
+                }
+
+                //<a class="btn btn-primary btn-custom-sm" title="view" href="'.DASHURL.'/admin/user/detail/'.$row->categoryId.'"><i class="fa fa-eye"></i></a>
+                $nestedData['action'] = '
+                <a class="btn btn-primary btn-custom-sm" title="view" href="'.DASHURL.'/admin/courses/detail/'.$row->categoryId.'"><i class="fa fa-eye"></i></a>
+				
+				<button onclick="return confirm(\'Are You Sure Want To Update This Record ?\')? CallHandlerForDeleteRecord(this,\'course\','.$row->courseId.','.$updateStatus.'):\'\';" class="btn btn-light btn-custom-sm '.$btnClass.'" title="Active/DeActive" data-status="'.$nestedData['status'].'"><i class="fa fa-circle"></i></button>
+
+				<button class="btn btn-danger btn-custom-sm" title="Delete Record"  onclick="return confirm(\'Are You Sure Want To Delete This Record ?\')? CallHandlerForDeleteRecord(this,\'course\','.$row->courseId.',2):\'\';"><i class="fa fa-trash"></i></button>';
+                
                 $data[] = $nestedData;
 
             }

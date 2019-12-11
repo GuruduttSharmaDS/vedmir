@@ -12,9 +12,9 @@ class Student extends CI_Controller {
 
 	public $menu		= 3;
 	public $subMenu		= 31;
-	public $subSubMenu		= 0;
+	public $subSubMenu	= 0;
 	public $outputdata 	= array();
-	public $langSuffix = '';
+	public $langSuffix 	= '';
 
 	public function __construct() {
 		parent::__construct();
@@ -26,6 +26,13 @@ class Student extends CI_Controller {
 		$this->langSuffix = $this->lang->line('langSuffix');
 		$this->viewPath = 'admin/Student/';
 	}	
+
+	// Listing
+	public function list() {	
+		$this->menu		=	3;
+		$this->subMenu	=	32;	
+		$this->load->viewD($this->viewPath.'list', $this->outputdata);
+	}
 
 	// Add Item
 	public function add($itemId = 0) {		
@@ -39,14 +46,7 @@ class Student extends CI_Controller {
 		$this->load->viewD($this->viewPath.'add_update', $this->outputdata);
 	}
 
-	// Listing
-	public function list() {	
-		$this->menu		=	3;
-		$this->subMenu	=	32;	
-		$this->load->viewD($this->viewPath.'list', $this->outputdata);
-	}
-
-	// user profile view
+	// Detail Page
 	public function detail($userId) {		
 		if ($userId == 0 )
 			redirect(DASHURL.$this->viewPath.'list');

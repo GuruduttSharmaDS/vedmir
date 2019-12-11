@@ -48,7 +48,7 @@ class Dashboard extends REST_Controller {
 
     // Get Popular Courses
     public function getPopularCourses () {
-        $query = "SELECT category.categoryName, user.userName as userName, user.img as userImg, courses.* from vm_courses as courses 
+        $query = "SELECT category.categoryName, user.userName as userName, user.img as userImg, courses.* from vm_course as courses 
                 left join vm_category as category on category.categoryId = courses.categoryId
                 left join vm_user as user on user.userId = courses.userId";
         $items = $this->Common_model->exequery($query); 
@@ -94,7 +94,6 @@ class Dashboard extends REST_Controller {
         $returnData['categories'] = $this->getCategoryTree();
         $returnData['popularCourses'] = $this->getPopularCourses();
 
-        echo $this->lang->line('invalidEmail');die;
 
         $this->response(['status' => TRUE,  "message" => "Dashboard Details", 'data' => $returnData], REST_Controller::HTTP_OK);
     }

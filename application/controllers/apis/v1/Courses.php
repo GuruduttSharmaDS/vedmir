@@ -20,7 +20,7 @@ class Courses extends REST_Controller {
 
     // Get Popular Courses
     public function getCourseDetails ($courseId) {
-        $query = "SELECT category.categoryName, user.userName as userName, user.img as userImg, courses.* from vm_courses as courses 
+        $query = "SELECT category.categoryName, user.userName as userName, user.img as userImg, courses.* from vm_course as courses 
                 left join vm_category as category on category.categoryId = courses.categoryId
                 left join vm_user as user on user.userId = courses.userId where courses.courseId = $courseId";
         $items = $this->Common_model->exequery($query); 
