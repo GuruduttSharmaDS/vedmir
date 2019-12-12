@@ -1,0 +1,5 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^http://localhost/vedmir/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^http://localhost/vedmir/.*$ [NC]
+RewriteRule .(mp4|mp3|avi)$ - [F]

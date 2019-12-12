@@ -20,20 +20,28 @@ class Dashboard extends REST_Controller {
 
     // Get Popular Category
     public function getCategoryTree () {
-        $items = $this->Common_model->exequery("SELECT categoryId,idParent,categoryName,slug from vm_category"); 
+        $items = $this->Common_model->exequery("SELECT categoryId,idParent,categoryName,categoryImage,slug from vm_category"); 
 
         $childs = $tree = [];
 
         if (!empty ($items)) {
             // Get all childs
-            foreach($items as $item)
+            foreach($items as $item) {
+                if (isset ($item->categoryImage) && !empty ($item->categoryImage) && file_exists(RELCATEGORY.$item->categoryImage))
+                    $categoryImage = ABSCATEGORY. $item->categoryImage;
+                else 
+                    $categoryImage = "";
+                
                 $childs[$item->idParent][] = [
                     'categoryId'    => $item->categoryId,
                     'categoryName'  => $item->categoryName,
+                    'categoryImage' => $categoryImage,
                     'slug'          => $item->slug,
                     'totalCourses'  => 0,
                     'isPopularCategory' => true
                 ];
+
+            }                  
 
             // Set Childs into the category
             foreach($items as $item) 
@@ -48,7 +56,7 @@ class Dashboard extends REST_Controller {
 
     // Get Popular Courses
     public function getPopularCourses () {
-        $query = "SELECT category.categoryName, user.userName as userName, user.img as userImg, courses.* from vm_course as courses 
+        $query = "SELECT category.categoryName, category.categoryImage, user.userName as userName, user.img as userImg, courses.* from vm_course as courses 
                 left join vm_category as category on category.categoryId = courses.categoryId
                 left join vm_user as user on user.userId = courses.userId";
         $items = $this->Common_model->exequery($query); 
@@ -68,19 +76,24 @@ class Dashboard extends REST_Controller {
                     $thumbnailImage = ABSCOURSETHUMBNAIL. $item->thumbnailImage;
                 else 
                     $thumbnailImage = "";
+
+                if (isset ($item->categoryImage) && !empty ($item->categoryImage) && file_exists(RELCATEGORY.$item->categoryImage))
+                    $categoryImage = ABSCATEGORY. $item->categoryImage;
+                else 
+                    $categoryImage = "";
                 
                 $returnData[] = [
                     'categoryId'    => $item->categoryId,
                     'categoryName'  => $item->categoryName,
+                    'categoryImage'  => $categoryImage,
                     'userName'      => $item->userName,
                     'userImg'       => $userImg,
-                    'categoryName'  => $item->categoryName,
                     'courseId'      => $item->courseId,
                     'courseName'    => $item->courseName,
                     'slug'          => $item->slug,
                     'thumbnailImage'=> $thumbnailImage,
                     'courseTitle'   => $item->courseTitle,
-                    'courseDescription'          => $item->courseDescription,
+                    'courseDescription' => $item->courseDescription,
                     'coursePrice'   => $item->coursePrice,
                     'coursePriceAfterDiscount' => $item->coursePrice,
                     'updatedOn'     => $item->updatedOn,

@@ -31,7 +31,7 @@ $config['base_url']		= (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off')
 define("BASEURL",       $config['base_url']);
 define("DASHURL",       $config['base_url']."/dashboard");
 
-// Course Path: 
+// Course Path Start: 
 define("ABSCOURSELACTURE", BASEURL."/system/course/");
 define("ABSCOURSETHUMBNAIL", BASEURL."/system/course/course-thumbnailImage/");
 define("ABSCOURSEVideo", BASEURL."/system/course/course-video/");
@@ -40,6 +40,11 @@ define("RELCOURSE", BASEPATH.DS."course".DS);
 define("RELCOURSELACTURE", RELCOURSE. "course-lactures".DS);
 define("RELCOURSETHUMBNAIL", RELCOURSE. "course-thumbnailImage".DS);
 define("RELCOURSEVideo", RELCOURSE. "course-video".DS);
+// Course Path End: 
+
+// Category Path Start: 
+define("ABSCATEGORY", BASEURL."/system/static/uploads/category_images/");
+define("RELCATEGORY", BASEPATH. "static".DS."uploads".DS."category_images".DS);
 
 $config['LOCALCSS']		= BASEURL."/system/static/css/local";
 $config['LOCALJS']		= BASEURL."/system/static/js/local";
