@@ -56,8 +56,8 @@
             <li class="nav-item dropdown <?=($this->menu == 6) ? 'show' : ''; ?>">
                 <a class="list-group-item list-group-item-action nav-link dropdown-toggle <?=($this->menu == 6) ? 'active' : ''; ?>" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="<?=($this->menu == 6) ? 'true' : 'false'; ?>"><i class="fa fa-users" ></i><span>Category</span></a>
                 <div class="dropdown-menu <?=($this->menu == 6) ? 'show' : ''; ?>" aria-labelledby="navbarDropdown">
-                    <a href="<?php echo DASHURL."/admin/category/add-category"; ?>" class="dropdown-item <?=($this->subMenu == 61) ? 'active' : ''; ?>"><?=$this->lang->line('addCategory') ?></a>
-                    <a href="<?php echo DASHURL."/admin/category/category-list"; ?>" class="dropdown-item <?php echo ($this->subMenu == 62) ? 'active' : ''; ?>"> <?=$this->lang->line('categoryList') ?> </a>
+                    <a href="<?php echo DASHURL."/admin/category/add"; ?>" class="dropdown-item <?=($this->subMenu == 61) ? 'active' : ''; ?>"><?=$this->lang->line('addCategory') ?></a>
+                    <a href="<?php echo DASHURL."/admin/category/list"; ?>" class="dropdown-item <?php echo ($this->subMenu == 62) ? 'active' : ''; ?>"> <?=$this->lang->line('categoryList') ?> </a>
                 </div>
             </li>
 

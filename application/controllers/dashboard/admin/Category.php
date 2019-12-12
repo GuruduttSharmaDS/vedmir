@@ -24,7 +24,14 @@ class Category extends CI_Controller {
 		$this->viewPath = 'admin/Category/';
 	}
 
-	public function add_category($Id = 0) {		
+	// user-listing view
+	public function list(){	
+		$this->menu		=	6;
+		$this->subMenu	=	62;	
+		$this->load->viewD($this->viewPath.'/list', $this->outputdata);
+	}
+
+	public function add($Id = 0) {		
 		$this->menu		=	6;
 		$this->subMenu	=	61;
 
@@ -34,11 +41,5 @@ class Category extends CI_Controller {
 
 		$this->load->viewD($this->viewPath.'/add', $this->outputdata);
 	}
-
-	// user-listing view
-	public function category_list(){	
-		$this->menu		=	6;
-		$this->subMenu	=	62;	
-		$this->load->viewD($this->viewPath.'/list', $this->outputdata);
-	}
+	
 }
