@@ -947,8 +947,6 @@ $lang['studentList'] = 'Student List';
 // Student
 $lang['student'] = 'Student';
 $lang['addNewStudent'] = 'Add New Student';
-
-
 $lang['totalStudents'] = 'Total Students';
 $lang['totalTeachers'] = 'Total Teachers';
 $lang['totalCategories'] = 'Total Categories';
@@ -956,4 +954,7 @@ $lang['students'] = 'Students';
 
 $lang['userIdRequired'] = 'userId is required';
 $lang['courseIdRequired'] = 'courseId is required';
+
+// Common
+$lang['success'] = 'success';
 

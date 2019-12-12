@@ -957,3 +957,5 @@ $lang['students'] = 'Students';
 $lang['userIdRequired'] = 'userId is required';
 $lang['courseIdRequired'] = 'courseId is required';
 
+// Common
+$lang['success'] = 'success';

@@ -2348,4 +2348,9 @@ abstract class REST_Controller extends CI_Controller {
             $this->response(['status' => FALSE, 'message' => $this->lang->line('unAuthorized') ], REST_Controller::HTTP_UNAUTHORIZED);
         }
     }
+
+    // Success Response
+    public function successResponse ($message = "", $data) {
+        $this->response(['status' => TRUE,  "message" => $message, 'data' => $data], REST_Controller::HTTP_OK);
+    }
 }
