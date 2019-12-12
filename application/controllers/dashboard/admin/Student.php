@@ -52,7 +52,7 @@ class Student extends CI_Controller {
 			redirect(DASHURL.$this->viewPath.'list');
 		$this->menu		=	3;
 		$this->subMenu	=	32;
-		$query	=	"SELECT *, concat(userName, ' ', lastName) as userName,(SELECT (CASE WHEN count(*) > 0 then (CASE WHEN isUpdatedPlan = 1 THEN ( CASE WHEN couponId != 0 THEN ( SELECT (CASE WHEN offeredType = 3 THEN couponCode ELSE (CONCAT('COUPON - ', (SELECT CONCAT(sp.planName$this->langSuffix, ' (',sd.period,' ',sd.duration,')') as planName FROM vm_subscription_details sd left JOIN vm_subscription_plan as sp on sp.Id = sd.subscriptionId WHERE detailId =vm_user_memberships.planId))) end) as planName FROM vm_coupons WHERE couponId = vm_user_memberships.couponId  ) ELSE (SELECT CONCAT(sp.planName$this->langSuffix, ' (',sd.period,' ',sd.duration,')') as planName FROM vm_subscription_details sd left JOIN vm_subscription_plan as sp on sp.Id = sd.subscriptionId WHERE detailId =vm_user_memberships.planId) end)  ELSE (SELECT planName as planName FROM `vm_subscription_plan` WHERE vm_subscription_plan.id = vm_user_memberships.planId) END ) else '' end) as membership FROM vm_user_memberships WHERE startDate <= '".date('Y-m-d')."' AND endDate >= '".date('Y-m-d')."' AND userId=vm_user.userId AND subscriptionStatus ='Active' order by membershipId desc limit 0, 1) as `membershipName` from vm_user where userId = ".$userId;
+		$query	=	"SELECT *, concat(userName, ' ', lastName) as userName from vm_user where userId = ".$userId;
 		$profileInfo = $this->Common_model->exequery($query,1);
 		$this->outputdata['profile'] =	($profileInfo) ? $profileInfo  : array();
 
@@ -65,7 +65,7 @@ class Student extends CI_Controller {
 			redirect(DASHURL.'/admin/user/list');		
 		$this->menu		=	3;
 		$this->subMenu	=	32;
-		$query	=	"SELECT vm_user.*, (SELECT (CASE WHEN count(*) > 0 then (CASE WHEN isUpdatedPlan = 1 THEN ( CASE WHEN couponId != 0 THEN ( SELECT (CASE WHEN offeredType = 3 THEN couponCode ELSE (CONCAT('COUPON - ', (SELECT CONCAT(sp.planName$this->langSuffix, ' (',sd.period,' ',sd.duration,')') as planName FROM vm_subscription_details sd left JOIN vm_subscription_plan as sp on sp.Id = sd.subscriptionId WHERE detailId =vm_user_memberships.planId))) end) as planName FROM vm_coupons WHERE couponId = vm_user_memberships.couponId  ) ELSE (SELECT CONCAT(sp.planName$this->langSuffix, ' (',sd.period,' ',sd.duration,')') as planName FROM vm_subscription_details sd left JOIN vm_subscription_plan as sp on sp.Id = sd.subscriptionId WHERE detailId =vm_user_memberships.planId) end)  ELSE (SELECT planName as planName FROM `vm_subscription_plan` WHERE vm_subscription_plan.id = vm_user_memberships.planId) END ) else '' end) as membership FROM vm_user_memberships WHERE startDate <= '".date('Y-m-d')."' AND endDate >= '".date('Y-m-d')."' AND userId=vm_user.userId AND subscriptionStatus ='Active' order by membershipId desc limit 0, 1) as `membershipName`, (SELECT (CASE WHEN count(*) > 0 then 'Active' else 'Not Active' end) as membership_count FROM vm_user_memberships WHERE startDate <= '".date('Y-m-d')."' AND endDate >= '".date('Y-m-d')."' AND userId=vm_user.userId AND subscriptionStatus ='Active' order by membershipId desc limit 0, 1) as `membership` from vm_user where userId = ".$userId;
+		$query	=	"SELECT vm_user.* from vm_user where userId = ".$userId;
 		$profileInfo = $this->Common_model->exequery($query,1);
 		$this->outputdata['profile'] =	($profileInfo) ? $profileInfo  : array();
 		$this->load->viewD($this->sessRole.'/user_membership_info',$this->outputdata);

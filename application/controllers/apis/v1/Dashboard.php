@@ -14,8 +14,8 @@ class Dashboard extends REST_Controller {
         // Check User Authorization
         $this->checkUserAuthentication ();
 
-        $this->userProfileImageRelativePath = "/system/static/uploads/user_images/";
-        $this->userProfileImageAbsolutePath = BASEPATH . "static". DIRECTORY_SEPARATOR . "uploads". DIRECTORY_SEPARATOR. "user_images".DIRECTORY_SEPARATOR;
+        $this->userProfileImageRelativePath = BASEURL. "/system/static/uploads/user_images/";
+        $this->userProfileImageAbsolutePath = BASEPATH . "static". DS . "uploads". DS. "user_images".DS;
     }
 
     // Get Popular Category
@@ -63,6 +63,11 @@ class Dashboard extends REST_Controller {
                     $userImg = $this->userProfileImageRelativePath. $item->userImg;
                 else 
                     $userImg = "";
+
+                if (isset ($item->thumbnailImage) && !empty ($item->thumbnailImage) && file_exists(RELCOURSETHUMBNAIL.$item->thumbnailImage))
+                    $thumbnailImage = ABSCOURSETHUMBNAIL. $item->thumbnailImage;
+                else 
+                    $thumbnailImage = "";
                 
                 $returnData[] = [
                     'categoryId'    => $item->categoryId,
@@ -73,7 +78,7 @@ class Dashboard extends REST_Controller {
                     'courseId'      => $item->courseId,
                     'courseName'    => $item->courseName,
                     'slug'          => $item->slug,
-                    'thumbnailImage'=> $item->thumbnailImage,
+                    'thumbnailImage'=> $thumbnailImage,
                     'courseTitle'   => $item->courseTitle,
                     'courseDescription'          => $item->courseDescription,
                     'coursePrice'   => $item->coursePrice,

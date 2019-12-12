@@ -23,13 +23,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-
+define ("DS", DIRECTORY_SEPARATOR);
 define('DOMAINNAME', $_SERVER['HTTP_HOST']);
 $siteName = (strpos($_SERVER['SERVER_NAME'], 'localhost') > -1)?'/vedmir':'';
 $config['base_url']		= (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ? 'https://'.$_SERVER['SERVER_NAME'].$siteName : 'http://'.$_SERVER['SERVER_NAME'].$siteName;
 
 define("BASEURL",       $config['base_url']);
 define("DASHURL",       $config['base_url']."/dashboard");
+
+// Course Path: 
+define("ABSCOURSELACTURE", BASEURL."/system/course/");
+define("ABSCOURSETHUMBNAIL", BASEURL."/system/course/course-thumbnailImage/");
+define("ABSCOURSEVideo", BASEURL."/system/course/course-video/");
+
+define("RELCOURSE", BASEPATH.DS."course".DS);
+define("RELCOURSELACTURE", RELCOURSE. "course-lactures".DS);
+define("RELCOURSETHUMBNAIL", RELCOURSE. "course-thumbnailImage".DS);
+define("RELCOURSEVideo", RELCOURSE. "course-video".DS);
 
 $config['LOCALCSS']		= BASEURL."/system/static/css/local";
 $config['LOCALJS']		= BASEURL."/system/static/js/local";
