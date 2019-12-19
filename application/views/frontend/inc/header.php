@@ -9,12 +9,12 @@
   <link rel="icon" href="img/vedmir-favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,500,500i,700,700i,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/vedmir/system/fontend-assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/vedmir/system/fontend-assets/css/mdb.min.css">
-  <link rel="stylesheet" type="text/css" href="/vedmir/system/fontend-assets/css/slick.css">
-  <link rel="stylesheet" type="text/css" href="/vedmir/system/fontend-assets/css/slick-theme.css">
-  <link rel="stylesheet" href="/vedmir/system/fontend-assets/css/style.css">
-  <link rel="stylesheet" href="/vedmir/system/fontend-assets/css/responsive.css">
+  <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>/system/fontend-assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>/system/fontend-assets/css/mdb.min.css">
+  <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>/system/fontend-assets/css/slick.css">
+  <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>/system/fontend-assets/css/slick-theme.css">
+  <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>/system/fontend-assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="<?= BASEURL ?>/system/fontend-assets/css/responsive.css">
 </head>
 <body>
   <!-- Start Header Section -->
@@ -25,14 +25,14 @@
           <div class="col-md-12">
             <!--Navbar -->
             <nav class="navbar navbar-expand-sm navbar-dark">
-              <a class="navbar-brand hidden-big" href="javascript:void(0);"><img src="/vedmir/system/fontend-assets/img/main-logo.png" alt="main logo"></a>
+              <a class="navbar-brand hidden-big" href="javascript:void(0);"><img src="<?= BASEURL ?>/system/fontend-assets/img/main-logo.png" alt="main logo"></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
               aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
                 <div class="col-md-4 logo-section">
-                  <a class="navbar-brand hidden-xs" href="javascript:void(0);"><img src="/vedmir/system/fontend-assets/img/main-logo.png" alt="main logo"></a>
+                  <a class="navbar-brand hidden-xs" href="javascript:void(0);"><img src="<?= BASEURL ?>/system/fontend-assets/img/main-logo.png" alt="main logo"></a>
                   <ul class="navbar-nav left-menu">
                     <li class="nav-item">
                       <a class="nav-link" href="javascript:void(0);">Become a Teacher</a>

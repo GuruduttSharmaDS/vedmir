@@ -1,4 +1,4 @@
-﻿<!-- Footer Section -->
+﻿﻿<!-- Footer Section -->
 <footer>
   <div class="topFooter">
     <div class="container">
@@ -7,7 +7,7 @@
         <div class="col-md-4 col-sm-3">
           <div class="footer-widget">
             <div class="footer-logo">
-              <img src="/vedmir/system/fontend-assets/img/footer-logo.png" alt="Vedmir Logo">
+              <img src="<?= BASEURL ?>/system/fontend-assets/img/footer-logo.png" alt="Vedmir Logo">
             </div>
             <p>Vedmir provide top courses dolor sit amet, consectetur adipiscing elit. Curabitur tristique sagittis diam, id suscipit augue .</p>
           </div>
@@ -85,11 +85,11 @@
 </footer>
 
   <!-- jQuery -->
-  <script type="text/javascript" src="/vedmir/system/fontend-assets/js/jquery.min.js"></script>
-  <script type="text/javascript" src="/vedmir/system/fontend-assets/js/popper.min.js"></script>
-  <script type="text/javascript" src="/vedmir/system/fontend-assets/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="/vedmir/system/fontend-assets/js/mdb.min.js"></script>
-  <script src="/vedmir/system/fontend-assets/js/slick.js" type="text/javascript" charset="utf-8"></script>
-  <script type="text/javascript" src="/vedmir/system/fontend-assets/js/custom.js"></script>
+  <script type="text/javascript" src="<?= BASEURL ?>/system/fontend-assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="<?= BASEURL ?>/system/fontend-assets/js/popper.min.js"></script>
+  <script type="text/javascript" src="<?= BASEURL ?>/system/fontend-assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="<?= BASEURL ?>/system/fontend-assets/js/mdb.min.js"></script>
+  <script type="text/javascript" src="<?= BASEURL ?>/system/fontend-assets/js/slick.js" charset="utf-8"></script>
+  <script type="text/javascript" src="<?= BASEURL ?>/system/fontend-assets/js/custom.js"></script>
 </body>
 </html>
