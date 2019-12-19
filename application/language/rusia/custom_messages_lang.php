@@ -945,6 +945,7 @@ $lang['addStudent'] = 'Add Student';
 $lang['studentList'] = 'Student List';
 
 // Student
+$lang['userType'] = 'User Type';
 $lang['student'] = 'Student';
 $lang['addNewStudent'] = 'Add New Student';
 

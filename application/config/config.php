@@ -46,6 +46,10 @@ define("RELCOURSEVideo", RELCOURSE. "course-video".DS);
 define("ABSCATEGORY", BASEURL."/system/static/uploads/category_images/");
 define("RELCATEGORY", BASEPATH. "static".DS."uploads".DS."category_images".DS);
 
+// User Profile IMG: 
+define("ABSUSERIMG", BASEURL."/system/static/uploads/user_images/");
+define("RELUSERIMG", BASEPATH. "static".DS."uploads".DS."user_images".DS);
+
 $config['LOCALCSS']		= BASEURL."/system/static/css/local";
 $config['LOCALJS']		= BASEURL."/system/static/js/local";
 define("LOCALCSS", 		$config['LOCALCSS']);

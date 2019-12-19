@@ -10,8 +10,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Category extends CI_Controller {
 
-	public $menu		= 6;
-	public $subMenu		= 61;
+	public $menu		= 4;
+	public $subMenu		= 41;
 	public $subSubMenu		= 0;
 	public $outputdata 	= array();
 	
@@ -26,17 +26,17 @@ class Category extends CI_Controller {
 
 	// user-listing view
 	public function list(){	
-		$this->menu		=	6;
-		$this->subMenu	=	62;	
+		$this->menu		=	4;
+		$this->subMenu	=	42;	
 		$this->load->viewD($this->viewPath.'/list', $this->outputdata);
 	}
 
 	public function add($Id = 0) {		
-		$this->menu		=	6;
-		$this->subMenu	=	61;
+		$this->menu		=	4;
+		$this->subMenu	=	41;
 
 		if ($Id > 0)
-			$this->outputdata['detailData']  = $this->Common_model->selRowData("vm_category","","categoryId=".$Id);
+			$this->outputdata['detailData']  = $this->Common_model->selRowData("vm_category","*, (case when categoryImage != '' then concat('".UPLOADPATH."/category_images/', categoryImage) else '' end) as categoryImage","categoryId=".$Id);
 		$this->outputdata['parentId'] = $this->Common_model->selTableData("vm_category","","categoryId !='".$Id."'");
 
 		$this->load->viewD($this->viewPath.'/add', $this->outputdata);

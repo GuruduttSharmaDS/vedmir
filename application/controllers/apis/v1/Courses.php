@@ -30,17 +30,7 @@ class Courses extends REST_Controller {
         if (!empty ($items)) {
 
             foreach($items as $item) {
-                $userImg = "";
-                if (isset ($item->userImg) && !empty ($item->userImg) && file_exists($this->userProfileImageAbsolutePath.$item->userImg))
-                    $userImg = $this->userProfileImageRelativePath. $item->userImg;
-                else 
-                    $userImg = "";
-                
-                if (isset ($item->thumbnailImage) && !empty ($item->thumbnailImage) && file_exists(ABSCOURSETHUMBNAIL.$item->thumbnailImage))
-                    $thumbnailImage = ABSCOURSETHUMBNAIL. $item->thumbnailImage;
-                else 
-                    $thumbnailImage = "";
-
+               
                 $returnData = [
                     'categoryId'    => $item->categoryId,
                     'categoryName'  => $item->categoryName,
@@ -48,14 +38,14 @@ class Courses extends REST_Controller {
                     'userAboutUs'   => "",
                     'userTotalStudent' => 0,
                     'userTotalCourses' => 0,
-                    'userImg'       => $userImg,
+                    'userImg'       => $this->getUserProfileImg ($item->userImg),
                     'categoryName'  => $item->categoryName,
                     'courseId'      => $item->courseId,
                     'courseName'    => $item->courseName,                    
                     'courseTitle'   => $item->courseTitle,
                     'courseDescription' => $item->courseDescription,
                     'courseSlug'    => $item->slug,
-                    'thumbnailImage'=> $thumbnailImage,
+                    'thumbnailImage'=> $this->getCourseThumbnailImages ($item->thumbnailImage),
                     'courseVideo'   => "",
                     'coursePrice'   => $item->coursePrice,
                     'coursePriceAfterDiscount' => $item->coursePrice,
@@ -132,7 +122,7 @@ class Courses extends REST_Controller {
         from vm_user_recently_view_course as crvc 
         left join vm_course as course on course.courseId = crvc.courseId
         left join vm_user as user on user.userId = crvc.userId 
-        where crvc.userId = $userId";
+        where crvc.userId = $userId order by crvc.viewId desc";
         
         $items = $this->Common_model->exequery($query); 
         $returnData = [];
@@ -147,7 +137,8 @@ class Courses extends REST_Controller {
                     'courseTitle'   => $item->courseTitle,
                     'courseDescription' => $item->courseDescription,
                     'courseSlug'    => $item->slug,
-                    'thumbnailImage'=> $item->thumbnailImage,
+                    'userImg'       => $this->getUserProfileImg ($item->img),
+                    'thumbnailImage'=> $this->getCourseThumbnailImages ($item->thumbnailImage),
                     'courseVideo'   => "",
                     'coursePrice'   => $item->coursePrice,
                     'coursePriceAfterDiscount' => $item->coursePrice,
@@ -171,13 +162,7 @@ class Courses extends REST_Controller {
 
         $userViewCourse = $this->userViewCourse ();   
 
-        if ($userViewCourse) {                     
-            $this->response(['status' => TRUE,  "message" => "success", 'data' => $userViewCourse], REST_Controller::HTTP_OK);
-        } else {
-            $status['status'] = false;
-            $status['message'] = $this->lang->line('failedAddUser');
-            $this->response($status, REST_Controller::HTTP_CONFLICT);
-        }
+        $this->response(['status' => TRUE,  "message" => "success", 'data' => $userViewCourse], REST_Controller::HTTP_OK);
         
     }
 }

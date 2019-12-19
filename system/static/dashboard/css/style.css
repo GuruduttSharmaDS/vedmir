@@ -528,6 +528,11 @@ border-bottom: 0;
     margin: 0.3em !important;
 }
 
+.dataTable {
+    width: 100% !important;
+}
 
-
+#tableDataList_wrapper {
+    padding: 1% !important;
+} 
 /* end form field section */

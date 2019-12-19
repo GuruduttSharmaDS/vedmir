@@ -10,8 +10,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Courses extends CI_Controller {
 
-	public $menu		= 9;
-	public $subMenu		= 91;
+	public $menu		= 5;
+	public $subMenu		= 51;
 	public $subSubMenu		= 0;
 	public $outputdata 	= array();
 	
@@ -28,25 +28,48 @@ class Courses extends CI_Controller {
 
 	// Listing
 	public function list() {	
-		$this->menu		=	9;
-		$this->subMenu	=	92;	
+		$this->menu		=	5;
+		$this->subMenu	=	52;	
 		$this->load->viewD($this->viewPath.'list', $this->outputdata);
 	}
 
+
+	public function add($courseId = 0){		
+		$this->menu		=	5;
+		$this->subMenu	=	51;
+
+		if ($courseId > 0){
+			$subscriptionData = $this->Common_model->selRowData("vm_course","*, (case when thumbnailImage != '' then concat('".UPLOADPATH."/course_images/', thumbnailImage) else '' end) as thumbnailImage","courseId = ".$courseId);
+
+
+			$this->outputdata['coursesData'] =	$subscriptionData;
+		}
+		$query = "SELECT * from vm_category where status !=2 "; 
+
+
+			$categoryInfo = $this->Common_model->exequery($query);
+			$this->outputdata['categoryData'] =	($categoryInfo) ? $categoryInfo  : array();
+			//$this->outputdata['categoryData'] =	$categoryInfo;
+		$this->load->viewD($this->viewPath.'/add', $this->outputdata);
+	}
+
 	// Detail Page
-	public function detail($categoryId) {		
-		if($categoryId == 0 )
+	public function detail($courseId) {		
+		if($courseId == 0 )
 			redirect(DASHURL. '/admin/courses/list');
 
-		$this->menu		=	9;
-		$this->subMenu	=	93;
-		/*$query	=	"SELECT *, concat(userName,' ', lastName) as userName,(SELECT (CASE WHEN count(*) > 0 then (CASE WHEN isUpdatedPlan = 1 THEN ( CASE WHEN couponId != 0 THEN ( SELECT (CASE WHEN offeredType = 3 THEN couponCode ELSE (CONCAT('COUPON - ', (SELECT CONCAT(sp.planName$this->langSuffix, ' (',sd.period,' ',sd.duration,')') as planName FROM vm_subscription_details sd left JOIN vm_subscription_plan as sp on sp.Id = sd.subscriptionId WHERE detailId =vm_user_memberships.planId))) end) as planName FROM vm_coupons WHERE couponId = vm_user_memberships.couponId  ) ELSE (SELECT CONCAT(sp.planName$this->langSuffix, ' (',sd.period,' ',sd.duration,')') as planName FROM vm_subscription_details sd left JOIN vm_subscription_plan as sp on sp.Id = sd.subscriptionId WHERE detailId =vm_user_memberships.planId) end)  ELSE (SELECT planName as planName FROM `vm_subscription_plan` WHERE vm_subscription_plan.id = vm_user_memberships.planId) END ) else '' end) as membership FROM vm_user_memberships WHERE startDate <= '".date('Y-m-d')."' AND endDate >= '".date('Y-m-d')."' AND userId=vm_user.userId AND subscriptionStatus ='Active' order by membershipId desc limit 0, 1) as `membershipName` from vm_user where userId = ".$userId;*/
-
-		$query = "SELECT cau.*, cat.categoryName,cat.categoryId FROM vm_course cau left join vm_category as cat on cat.categoryId= cau.categoryId where cat.categoryId = ".$categoryId."";
+		$this->menu		=	5;
+		$this->subMenu	=	53;
 		
+
+		$query = "SELECT cau.*, cat.categoryName,cat.categoryId FROM vm_course cau left join vm_category as cat on cat.categoryId= cau.categoryId where cat.categoryId = cau.categoryId and cau.courseId= ".$courseId."";
+		
+		//$query ="SELECT * FROM `vm_course` where courseId = ".$courseId."";
+
+
 		$coursesData = $this->Common_model->exequery($query,1);
 		$this->outputdata['coursesData'] =	($coursesData) ? $coursesData  : array();
-		$this->load->viewD($this->viewPath.'/view_courses_info',$this->outputdata);
+		$this->load->viewD($this->viewPath.'view',$this->outputdata);
 	}
 
 }

@@ -4,6 +4,7 @@
  */
 
 //------------------------------Frontend : Home Page-------------------------------------------
+$lang['siteName']          			= 'Vedmir';
 $lang['faq']          				= 'FAQ';
 $lang['contactUs']          		= 'Contact';
 $lang['venue-owners']        		= 'venue-owners';
@@ -134,72 +135,6 @@ $lang['passwordNotMatchConfirmPassword']	= 'Password and confirm password does n
 $lang['confirmPassword']	= 'Confirm Password';
 
 
-//------------------------------Frontend : job Page------------------------------------
-
-$lang['jobOpportunities']				= 'Job Opportunities ';
-$lang['jobOpportunitiesParagraph']     	= 'Sed pharetra nunc ultrices, elementum velit fringilla, fringilla risus. Phase llus cursus est et nunc sagittis consectetur ac quis ante';
-$lang['weGetIt']          				= 'We get it';
-$lang['weGetItParagraph']          		= 'We know how competitive the industry is & that you need to be a pretty special agency to attract and keep talent.';
-$lang['weGetItParagraphSpan']          	= 'So, why Bigger Picture?';
-$lang['competitiveSalary']          	= 'Competitive Salary';
-$lang['competitiveSalaryParagraph']   	= 'It is a long established fact that a reader at its layout.';
-$lang['freeTraining']          			= 'Free Training';
-$lang['freeTrainingParagraph']  		= 'It is a long established fact that a reader at its layout.';
-$lang['allEquipmentYouNeed']          	= 'All Equipment You Need';
-$lang['allEquipmentYouNeedParagraph']	= 'It is a long established fact that a reader at its layout.';
-$lang['happyBirthday']          		= 'Exciting Opportunities';
-$lang['happyBirthdayParagraph']       	= 'It is a long established fact that a reader at its layout.';
-$lang['paidForTravel']          		= 'Paid for Travel';
-$lang['paidForTravelParagraph']       	= 'It is a long established fact that a reader at its layout.';
-$lang['cheers']          				= 'Discounts';
-$lang['cheersParagraph']          		= 'It is a long established fact that a reader at its layout.';
-$lang['ourVacancies']          			= 'Our Vacancies';
-$lang['ourVacancies1Name']          	= 'Corporate Event';
-$lang['ourVacancies1Position']          = 'Sales Manager';
-$lang['ourVacancies2Name']          	= 'Enterprise';
-$lang['ourVacancies2Position']          = 'Sales Manager';
-
-
-
-
-
-//------------------------------Frontend : contact Page------------------------------------
-
-$lang['contactUsParagraph']     			= 'Do you want to be a become a part of our huge network of operators and reach thousands of customers? Then you should contact us to know more.';
-$lang['getInTouch']          				= 'Get In Touch';
-$lang['getInTouchParagraph']          		= 'Feel free to get in touch with us about anything related to our services, subscriptions etc.';
-$lang['reasonForContactingUs']          	= 'Reason For Contacting Us';
-$lang['reasonForContactingUsOption1']       = 'Subscriptions';
-$lang['reasonForContactingUsOption2']       = 'Press';
-
-$lang['frontMediaEvent']          		= 'Media & events';
-$lang['frontPartners']          	= 'Partners';
-$lang['frontGenerInfo']       = 'General information';
-$lang['frontAppVedmir']       = 'Application Vedmir';
-
-//------------------------------Frontend : blog Page------------------------------------
-
-$lang['ourBlog']     				= 'Our Blog';
-$lang['ourBlogParagraph']     		= 'Find out what is new in the world of cocktails and nightlife';
-$lang['searchPosts']          		= 'Search Posts';
-$lang['categories']          		= 'Categories';
-$lang['latestProducts']          	= 'Latest Products';
-$lang['recordsPerPage']          	= 'Records Per Page';
-
-//------------------------------Frontend : blog detail Page------------------------------------
-
-$lang['blogDetails']     		= 'Blog Details';
-$lang['blogDetailsParagraph']	= 'Sed pharetra nunc ultrices, elementum velit fringilla, fringilla risus. Phase llus cursus est et nunc sagittis consectetur ac quis ante';
-$lang['comment']          		= 'Comment';
-$lang['comments']          		= 'Comments';
-$lang['commentHere']         	= 'Comment Here';
-$lang['writeComment']          	= 'Write Comment';
-$lang['commentNow']          	= 'Comment Now';
-$lang['readMore']          		= 'Read More';
-$lang['searchBoxIsEmpty'] 		= 'Search box is empty.';
-
-//------------------------------Frontend : messages------------------------------------
-
 $lang['internalError'] 			 = 'Internal server error.';
 $lang['commentAddedSuccessfully']= 'Your comment is added successfully and will show after verification.';
 $lang['emailRequired'] 			= 'Email required.';
@@ -210,17 +145,14 @@ $lang['invalidEmail'] 			= 'Invalid Email.';
 $lang['blogNotFound'] 			= 'Blog Not Found';
 $lang['postOn'] 				= 'Post On';
 
-
-
-
-
-
-
 //-------------------------------- Common ---------------------------------
+
 $lang['language']   = 'english';
 $lang['myLanguage']	= 'english';
 $lang['lang']   	= 'en';
 $lang['langSuffix']	= '';
 
-/* End of file messages_lang.php */
+// Admin
+$lang['adminSignIn']	= 'Sign In';
 
+// Admin - Sidebar

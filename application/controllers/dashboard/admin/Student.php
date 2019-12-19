@@ -29,15 +29,15 @@ class Student extends CI_Controller {
 
 	// Listing
 	public function list() {	
-		$this->menu		=	3;
-		$this->subMenu	=	32;	
+		$this->menu		=	2;
+		$this->subMenu	=	22;	
 		$this->load->viewD($this->viewPath.'list', $this->outputdata);
 	}
 
 	// Add Item
 	public function add($itemId = 0) {		
-		$this->menu		=	3;
-		$this->subMenu	=	31;
+		$this->menu		=	2;
+		$this->subMenu	=	21;
 
 		if ($itemId > 0) {
 			$userData = $this->Common_model->selRowData("vm_user","*, (case when img != '' then concat('".UPLOADPATH."/user_images/', img) else '' end) as img","userId = ".$itemId);	
@@ -50,8 +50,8 @@ class Student extends CI_Controller {
 	public function detail($userId) {		
 		if ($userId == 0 )
 			redirect(DASHURL.$this->viewPath.'list');
-		$this->menu		=	3;
-		$this->subMenu	=	32;
+		$this->menu		=	2;
+		$this->subMenu	=	22;
 		$query	=	"SELECT *, concat(userName, ' ', lastName) as userName from vm_user where userId = ".$userId;
 		$profileInfo = $this->Common_model->exequery($query,1);
 		$this->outputdata['profile'] =	($profileInfo) ? $profileInfo  : array();
@@ -63,8 +63,8 @@ class Student extends CI_Controller {
 	public function view_membership($userId = 0) {
 		if($userId == 0 )
 			redirect(DASHURL.'/admin/user/list');		
-		$this->menu		=	3;
-		$this->subMenu	=	32;
+		$this->menu		=	2;
+		$this->subMenu	=	22;
 		$query	=	"SELECT vm_user.* from vm_user where userId = ".$userId;
 		$profileInfo = $this->Common_model->exequery($query,1);
 		$this->outputdata['profile'] =	($profileInfo) ? $profileInfo  : array();

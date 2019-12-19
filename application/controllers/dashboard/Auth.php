@@ -8,15 +8,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Auth extends CI_Controller {
 	public $outputdata  	= array();
 	
-	public function __construct(){
+	public function __construct() {
 		parent::__construct();
 		// Your own constructor code
 		$this->load->library('email');
 		$this->load->helper('file');
         
 	}
-	
-
 
     // Change language 
     public function change_lang($lang='english') {
@@ -29,12 +27,12 @@ class Auth extends CI_Controller {
 		$this->session->set_userdata(PREFIX.'sessRole', $role);
 		$this->outputdata["role"]	=	$role;
 
-		if(isset($_POST['txtEmailId']) && $_POST['txtEmailId']!="") {
-			$testMode = (isset($_REQUEST['testMode']) )?true:false;		
-            $dbresult	=	$this->checkLogin($role,$testMode);
+		if (isset($_POST['txtEmailId']) && $_POST['txtEmailId'] !="") {
+			$testMode 	= (isset($_REQUEST['testMode']) )?true:false;		
+            $dbresult	= $this->checkLogin($role,$testMode);
 			// v3print($dbresult); v3print($_SESSION); exit;
 				
-			if($dbresult['flag'] == 2){
+			if ($dbresult['flag'] == 2) {
 				/* Set cookie for 'Remember Me' */
 				$cookieName = 'cookieVedmir'.$role;
 			
@@ -48,21 +46,10 @@ class Auth extends CI_Controller {
 						setcookie($cookieName, $_POST['txtEmailId'], $past);
 					}
 				}
-				// if($role == 'admin' && $testMode == false) {
-					
-				// 	$optResponse = $this->cUrlGetData("https://api.authy.com/protected/json/phones/verification/start", array('via' => 'sms', 'phone_number' => $dbresult['phone'], 'country_code' => $dbresult['countryCode'], 'locale' => 'en'), true);
-				// 	if($optResponse['success'])
-				// 		redirect(DASHURL."/admin/verify");
-				// 	else {
-				// 		$this->common_lib->setSessMsg($optResponse['message'], 2);
-    //             		redirect(DASHURL."/".$role."/login");
-    //             	}
-				// }
-				// else {
-					$this->common_lib->setSessionVariables();
+			
+				$this->common_lib->setSessionVariables();
 
-					redirect(DASHURL."/".$role."/welcome");
-				// }
+				redirect(DASHURL."/".$role."/welcome");
 				
 				
             }else {
@@ -75,7 +62,7 @@ class Auth extends CI_Controller {
 	}
 
 	// Verify Otp
-	public function verifyOtp(){
+	public function verifyOtp() {
 		$sessionAuthId = $this->session->userdata(PREFIX."sessOtpAuthId");
 		if($sessionAuthId > 0 ){
 			if(isset($_POST) && !empty($_POST)){

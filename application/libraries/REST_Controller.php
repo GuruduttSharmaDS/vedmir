@@ -2353,4 +2353,25 @@ abstract class REST_Controller extends CI_Controller {
     public function successResponse ($message = "", $data) {
         $this->response(['status' => TRUE,  "message" => $message, 'data' => $data], REST_Controller::HTTP_OK);
     }
+
+    // get thumbnail Image URL
+    public function getCourseThumbnailImages ($thumbnailImage) {
+        // echo RELCOURSETHUMBNAIL.$thumbnailImage;die;
+        if (isset ($thumbnailImage) && !empty ($thumbnailImage) && file_exists(RELCOURSETHUMBNAIL.$thumbnailImage))
+            $imageUrl = ABSCOURSETHUMBNAIL. $thumbnailImage;
+        else 
+            $imageUrl = "";
+
+        return $imageUrl;
+    }
+
+    // get User Image URL
+    public function getUserProfileImg ($userImg) {
+        if (isset ($userImg) && !empty ($userImg) && file_exists(RELUSERIMG.$userImg))
+            $imageUrl = ABSUSERIMG. $userImg;
+        else 
+            $imageUrl = "";
+
+        return $imageUrl;
+    }
 }

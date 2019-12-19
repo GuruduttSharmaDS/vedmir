@@ -940,11 +940,9 @@ $lang['cancelledByRestaurant'] = 'Cancelled By Restaurant';
 $lang['cancelledByUser'] = 'Cancelled By User';
 $lang['deletedUser'] = 'Deleted user';
 
-// Sidebar
+// Student
 $lang['addStudent'] = 'Add Student';
 $lang['studentList'] = 'Student List';
-
-// Student
 $lang['student'] = 'Student';
 $lang['addNewStudent'] = 'Add New Student';
 $lang['totalStudents'] = 'Total Students';
@@ -952,8 +950,19 @@ $lang['totalTeachers'] = 'Total Teachers';
 $lang['totalCategories'] = 'Total Categories';
 $lang['students'] = 'Students';
 
+// Teacher
+$lang['addTeacher'] = 'Add Teacher';
+$lang['teacherList'] = 'Teacher List';
+$lang['teacher'] = 'Teacher';
+$lang['addNewTeacher'] = 'Add New Teacher';
+$lang['teacher'] = 'Teachers';
+
 $lang['userIdRequired'] = 'userId is required';
+$lang['addCourse'] = 'Add Course';
+$lang['courseList'] = 'Course List';
 $lang['courseIdRequired'] = 'courseId is required';
+
+$lang['staticpageList'] = 'Static Page List';
 
 // Common
 $lang['success'] = 'success';

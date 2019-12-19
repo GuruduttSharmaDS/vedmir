@@ -316,7 +316,7 @@ class Welcome extends CI_Controller {
 		
 	}
 
-		public function lang_excel () {
+	public function lang_excel () {
 		$langArr = array();
 		$currentLang = $this->lang->line('language');
 		$langs = array('english', 'french');
